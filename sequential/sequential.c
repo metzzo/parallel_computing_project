@@ -7,27 +7,12 @@
 #include "sequential.h"
 #include "assert.h"
 
-int get_matrix_value(int row, int column, MATRIX_DATA *data) {
-    assert(row >= 0);
-    assert(column >= 0);
-    assert(row < data->row_count + 2);
-    assert(row < data->column_count + 2);
 
-    if (row == 0) {
-        return data->top[column];
-    } else if (row == data->row_count + 1) {
-        return data->bottom[column];
-    } else if (column == 0) {
-        return data->left[row - 1];
-    } else if (column == data->column_count + 1) {
-        return data->right[row - 1];
-    } else {
-        return data->matrix[MATRIX_POSITION(row - 1, column - 1, data)];
-    }
-}
 
-int stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
+void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
     INT_MATRIX matrix = data->matrix;
+    INT_MATRIX last_row = malloc(sizeof(int) * (data->column_count + 2));
+    INT_MATRIX current_row = malloc(sizeof(int) * (data->column_count + 2));
 
     for (int iteration = 0; iteration < stencil->iteration_count; iteration++) {
         int values[3][3];
@@ -37,10 +22,10 @@ int stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
             }
         }
 
-        INT_MATRIX last_row = malloc(sizeof(int) * (data->column_count + 2));
+
         memcpy(last_row, data->top, (data->column_count + 2)*sizeof(int));
 
-        INT_MATRIX current_row = malloc(sizeof(int) * (data->column_count + 2));
+
         current_row[0] = data->left[0];
         memcpy(&current_row[1], data->matrix, data->column_count * sizeof(int));
         current_row[data->column_count + 1] = data->right[0];
@@ -86,8 +71,8 @@ int stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
                 current_row[data->column_count + 1] = data->right[row + 1];
             }
         }
-
-        free(last_row);
-        free(current_row);
     }
+
+    free(last_row);
+    free(current_row);
 }

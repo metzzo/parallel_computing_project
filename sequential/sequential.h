@@ -7,6 +7,6 @@
 
 #include "../definitions/shared.h"
 
-int stencil_sequential(MATRIX_DATA *data, STENCIL *stencil);
+void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil);
 
 #endif //PROJECT_SEQUENTIAL_H

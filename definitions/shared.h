@@ -27,6 +27,10 @@ typedef struct {
 
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
-#define MATRIX_POSITION(row, column, matrix) ((row) * matrix->column_count + (column))
+#define MATRIX_POSITION(row, column, matrix) ((row) * (matrix->column_count) + (column))
+
+int get_matrix_value(int row, int column, MATRIX_DATA *data);
+
+void print_matrix(MATRIX_DATA *data);
 
 #endif //PROJECT_SHARED_H
