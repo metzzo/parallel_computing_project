@@ -5,11 +5,11 @@
 #ifndef PROJECT_TEST_RUNNER_H
 #define PROJECT_TEST_RUNNER_H
 
-#include "../definitions/shared.h"
+#include "../sequential/sequential_solution.h"
+#include "../pthread/pthread_solution.h"
 
-void test_sequential(MATRIX_DATA datas[], STENCIL stencils[], MATRIX_DATA expected_datas[]);
-void test_pthread(MATRIX_DATA *datas, STENCIL *stencils, MATRIX_DATA *expected_datas);
 void check_equal(MATRIX_DATA *a, MATRIX_DATA *b);
-void test_big_matrix(int row_count, int column_count, int p, int iteration_count);
+int add_stencil_func(int values[3][3]);
+int increment_stencil_func(int values[3][3]);
 
 #endif //PROJECT_TEST_RUNNER_H

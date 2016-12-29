@@ -31,23 +31,21 @@ struct thread_info {
 void thread_print_matrix(struct thread_info *tinfo, char *info) {
     pthread_mutex_lock(tinfo->debug_mutex);
 
-    printf("Thread %d: %s\n", tinfo->index, info);
+    DEBUG_LOG("Thread %d: %s\n", tinfo->index, info);
     print_matrix(tinfo->data);
-    printf("-----------------------------\n");
+    DEBUG_LOG("-----------------------------\n");
 
     pthread_mutex_unlock(tinfo->debug_mutex);
 }
 
-void thread_print_matrix_and_vector(struct thread_info *tinfo, INT_MATRIX vector, char *info) {
+void thread_print_matrix_and_vector(struct thread_info *tinfo, INT_MATRIX vector, int vector_size, char *info) {
     pthread_mutex_lock(tinfo->debug_mutex);
 
-    printf("Thread %d: %s\n", tinfo->index, info);
+    DEBUG_LOG("Thread %d: %s\n", tinfo->index, info);
     print_matrix(tinfo->data);
-    printf("Vector:\n");
-    for (int i = 0; i < tinfo->data->column_count; i++) {
-        printf("%d\t", vector[i]);
-    }
-    printf("\n-----------------------------\n");
+    DEBUG_LOG("Vector:\n");
+    print_vector(vector, vector_size);
+    DEBUG_LOG("----------------------------\n");
 
     pthread_mutex_unlock(tinfo->debug_mutex);
 }
@@ -139,7 +137,7 @@ static void* calculate_submatrix(void *arg){
 
             if (row == tinfo->start_index) {
                 pthread_mutex_lock(tinfo->debug_mutex);
-                printf("CondMineTop Semaphore Post in Thread %d\n", tinfo->index);
+                DEBUG_LOG("CondMineTop Semaphore Post in Thread %d\n", tinfo->index);
                 pthread_mutex_unlock(tinfo->debug_mutex);
 
                 sem_post(tinfo->condMineTop);
@@ -147,7 +145,7 @@ static void* calculate_submatrix(void *arg){
 
             if (row == tinfo->end_index - 1) {
                 pthread_mutex_lock(tinfo->debug_mutex);
-                printf("CondMineBottom Semaphore Post in Thread %d\n", tinfo->index);
+                DEBUG_LOG("CondMineBottom Semaphore Post in Thread %d\n", tinfo->index);
                 pthread_mutex_unlock(tinfo->debug_mutex);
 
                 sem_post(tinfo->condMineBottom);
@@ -156,7 +154,7 @@ static void* calculate_submatrix(void *arg){
 
         if (tinfo->hasOtherBottom) {
             pthread_mutex_lock(tinfo->debug_mutex);
-            printf("CondOtherBottom Semaphore Wait in Thread %d\n", tinfo->index);
+            DEBUG_LOG("CondOtherBottom Semaphore Wait in Thread %d\n", tinfo->index);
             pthread_mutex_unlock(tinfo->debug_mutex);
 
             sem_wait(tinfo->condOtherBottom);
@@ -168,16 +166,16 @@ static void* calculate_submatrix(void *arg){
 
         if (tinfo->hasOtherTop) {
             pthread_mutex_lock(tinfo->debug_mutex);
-            printf("CondOtherTop Semaphore Wait in Thread %d\n", tinfo->index);
+            DEBUG_LOG("CondOtherTop Semaphore Wait in Thread %d\n", tinfo->index);
             pthread_mutex_unlock(tinfo->debug_mutex);
 
             sem_wait(tinfo->condOtherTop);
         }
-        thread_print_matrix_and_vector(tinfo, bottom_row, "After copying bottom_row, before copying top_row");
+        thread_print_matrix_and_vector(tinfo, bottom_row, data->column_count, "After copying bottom_row, before copying top_row");
 
         memcpy(&data->matrix[MATRIX_POSITION(tinfo->start_index, 0, data)], &top_row[0], data->column_count * sizeof(int));
 
-        thread_print_matrix_and_vector(tinfo, top_row, "After copying top_row");
+        thread_print_matrix_and_vector(tinfo, top_row, data->column_count, "After copying top_row");
     }
 
     free(last_row);
@@ -188,16 +186,16 @@ static void* calculate_submatrix(void *arg){
 
 #define SEMAPHORE_NAME "aa_%d"
 
-void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int p) {
-    struct thread_info tinfo[p];
+void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
+    struct thread_info tinfo[thread_count];
     pthread_mutex_t debug_mutex;
     pthread_mutex_init(&debug_mutex, NULL);
 
-    for (int i = 0; i < p; i++) {
+    for (int i = 0; i < thread_count; i++) {
         tinfo[i].index = i;
-        tinfo[i].p = p;
-        tinfo[i].start_index = data->column_count/p * i;
-        tinfo[i].end_index = data->column_count/p * (i + 1);
+        tinfo[i].p = thread_count;
+        tinfo[i].start_index = data->column_count/thread_count * i;
+        tinfo[i].end_index = data->column_count/thread_count * (i + 1);
         tinfo[i].data = data;
         tinfo[i].stencil = stencil;
         tinfo[i].hasOtherBottom = 0;
@@ -213,8 +211,8 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int p) {
         tinfo[i].condMineTop = sem_open(sem1, 0);
         tinfo[i].condMineBottom = sem_open(sem2, 0);
     }
-    for (int i = 0; i < p && p > 1; i++) {
-        if (i == p - 1) {
+    for (int i = 0; i < thread_count && thread_count > 1; i++) {
+        if (i == thread_count - 1) {
             tinfo[i].condOtherTop = tinfo[i-1].condMineBottom;
             tinfo[i].hasOtherTop = 1;
         } else if (i == 0) {
@@ -228,15 +226,15 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int p) {
             tinfo[i].hasOtherBottom = 1;
         }
     }
-    for (int i = 0; i < p; i++) {
+    for (int i = 0; i < thread_count; i++) {
         pthread_create(&tinfo[i].thread_id, NULL, &calculate_submatrix, &tinfo[i]);
     }
 
-    for (int i = 0; i < p; i++) {
+    for (int i = 0; i < thread_count; i++) {
         pthread_join(tinfo[i].thread_id, NULL);
     }
 
-    for (int i = 0; i < p; i++) {
+    for (int i = 0; i < thread_count; i++) {
         sem_close(tinfo[i].condMineBottom);
         sem_close(tinfo[i].condMineTop);
 

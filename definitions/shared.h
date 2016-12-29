@@ -5,6 +5,13 @@
 #ifndef PROJECT_SHARED_H
 #define PROJECT_SHARED_H
 
+
+#include "stdio.h"
+
+#define DEBUG_MODE 1
+
+#define DEBUG_LOG(fmt, ...) do { if (DEBUG_MODE) fprintf(stderr, fmt, ##__VA_ARGS__); } while (0)
+
 typedef int* INT_MATRIX;
 typedef int* BOUNDARY;
 
@@ -25,12 +32,11 @@ typedef struct {
     int iteration_count;
 } STENCIL;
 
-#define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
-
 #define MATRIX_POSITION(row, column, matrix) ((row) * (matrix->column_count) + (column))
 
 int get_matrix_value(int row, int column, MATRIX_DATA *data);
 
 void print_matrix(MATRIX_DATA *data);
+void print_vector(INT_MATRIX data, int vector_size);
 
 #endif //PROJECT_SHARED_H

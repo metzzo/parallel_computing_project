@@ -177,32 +177,86 @@ pthread/pthread_solution.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/pthread/pthread_solution.c.s
 .PHONY : pthread/pthread_solution.c.s
 
-sequential/sequential.o: sequential/sequential.c.o
+sequential/sequential_solution.o: sequential/sequential_solution.c.o
 
-.PHONY : sequential/sequential.o
+.PHONY : sequential/sequential_solution.o
 
 # target to build an object file
-sequential/sequential.c.o:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential.c.o
-.PHONY : sequential/sequential.c.o
+sequential/sequential_solution.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential_solution.c.o
+.PHONY : sequential/sequential_solution.c.o
 
-sequential/sequential.i: sequential/sequential.c.i
+sequential/sequential_solution.i: sequential/sequential_solution.c.i
 
-.PHONY : sequential/sequential.i
+.PHONY : sequential/sequential_solution.i
 
 # target to preprocess a source file
-sequential/sequential.c.i:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential.c.i
-.PHONY : sequential/sequential.c.i
+sequential/sequential_solution.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential_solution.c.i
+.PHONY : sequential/sequential_solution.c.i
 
-sequential/sequential.s: sequential/sequential.c.s
+sequential/sequential_solution.s: sequential/sequential_solution.c.s
 
-.PHONY : sequential/sequential.s
+.PHONY : sequential/sequential_solution.s
 
 # target to generate assembly for a file
-sequential/sequential.c.s:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential.c.s
-.PHONY : sequential/sequential.c.s
+sequential/sequential_solution.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential_solution.c.s
+.PHONY : sequential/sequential_solution.c.s
+
+tests/test_cases/test_big_matrix.o: tests/test_cases/test_big_matrix.c.o
+
+.PHONY : tests/test_cases/test_big_matrix.o
+
+# target to build an object file
+tests/test_cases/test_big_matrix.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
+.PHONY : tests/test_cases/test_big_matrix.c.o
+
+tests/test_cases/test_big_matrix.i: tests/test_cases/test_big_matrix.c.i
+
+.PHONY : tests/test_cases/test_big_matrix.i
+
+# target to preprocess a source file
+tests/test_cases/test_big_matrix.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i
+.PHONY : tests/test_cases/test_big_matrix.c.i
+
+tests/test_cases/test_big_matrix.s: tests/test_cases/test_big_matrix.c.s
+
+.PHONY : tests/test_cases/test_big_matrix.s
+
+# target to generate assembly for a file
+tests/test_cases/test_big_matrix.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s
+.PHONY : tests/test_cases/test_big_matrix.c.s
+
+tests/test_cases/test_simple_matrix.o: tests/test_cases/test_simple_matrix.c.o
+
+.PHONY : tests/test_cases/test_simple_matrix.o
+
+# target to build an object file
+tests/test_cases/test_simple_matrix.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
+.PHONY : tests/test_cases/test_simple_matrix.c.o
+
+tests/test_cases/test_simple_matrix.i: tests/test_cases/test_simple_matrix.c.i
+
+.PHONY : tests/test_cases/test_simple_matrix.i
+
+# target to preprocess a source file
+tests/test_cases/test_simple_matrix.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i
+.PHONY : tests/test_cases/test_simple_matrix.c.i
+
+tests/test_cases/test_simple_matrix.s: tests/test_cases/test_simple_matrix.c.s
+
+.PHONY : tests/test_cases/test_simple_matrix.s
+
+# target to generate assembly for a file
+tests/test_cases/test_simple_matrix.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s
+.PHONY : tests/test_cases/test_simple_matrix.c.s
 
 tests/test_runner.o: tests/test_runner.c.o
 
@@ -246,9 +300,15 @@ help:
 	@echo "... pthread/pthread_solution.o"
 	@echo "... pthread/pthread_solution.i"
 	@echo "... pthread/pthread_solution.s"
-	@echo "... sequential/sequential.o"
-	@echo "... sequential/sequential.i"
-	@echo "... sequential/sequential.s"
+	@echo "... sequential/sequential_solution.o"
+	@echo "... sequential/sequential_solution.i"
+	@echo "... sequential/sequential_solution.s"
+	@echo "... tests/test_cases/test_big_matrix.o"
+	@echo "... tests/test_cases/test_big_matrix.i"
+	@echo "... tests/test_cases/test_big_matrix.s"
+	@echo "... tests/test_cases/test_simple_matrix.o"
+	@echo "... tests/test_cases/test_simple_matrix.i"
+	@echo "... tests/test_cases/test_simple_matrix.s"
 	@echo "... tests/test_runner.o"
 	@echo "... tests/test_runner.i"
 	@echo "... tests/test_runner.s"

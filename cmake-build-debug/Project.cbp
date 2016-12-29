@@ -94,10 +94,22 @@
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h">
 			<Option target="Project"/>
 		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential.c">
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c">
 			<Option target="Project"/>
 		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential.h">
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.h">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.h">
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c">

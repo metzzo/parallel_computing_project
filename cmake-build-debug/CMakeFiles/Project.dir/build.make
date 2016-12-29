@@ -57,28 +57,28 @@ include CMakeFiles/Project.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Project.dir/flags.make
 
-CMakeFiles/Project.dir/sequential/sequential.c.o: CMakeFiles/Project.dir/flags.make
-CMakeFiles/Project.dir/sequential/sequential.c.o: ../sequential/sequential.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Project.dir/sequential/sequential.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/sequential/sequential.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential.c
+CMakeFiles/Project.dir/sequential/sequential_solution.c.o: CMakeFiles/Project.dir/flags.make
+CMakeFiles/Project.dir/sequential/sequential_solution.c.o: ../sequential/sequential_solution.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Project.dir/sequential/sequential_solution.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/sequential/sequential_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c
 
-CMakeFiles/Project.dir/sequential/sequential.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/sequential/sequential.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential.c > CMakeFiles/Project.dir/sequential/sequential.c.i
+CMakeFiles/Project.dir/sequential/sequential_solution.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/sequential/sequential_solution.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c > CMakeFiles/Project.dir/sequential/sequential_solution.c.i
 
-CMakeFiles/Project.dir/sequential/sequential.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/sequential/sequential.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential.c -o CMakeFiles/Project.dir/sequential/sequential.c.s
+CMakeFiles/Project.dir/sequential/sequential_solution.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/sequential/sequential_solution.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c -o CMakeFiles/Project.dir/sequential/sequential_solution.c.s
 
-CMakeFiles/Project.dir/sequential/sequential.c.o.requires:
+CMakeFiles/Project.dir/sequential/sequential_solution.c.o.requires:
 
-.PHONY : CMakeFiles/Project.dir/sequential/sequential.c.o.requires
+.PHONY : CMakeFiles/Project.dir/sequential/sequential_solution.c.o.requires
 
-CMakeFiles/Project.dir/sequential/sequential.c.o.provides: CMakeFiles/Project.dir/sequential/sequential.c.o.requires
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential.c.o.provides.build
-.PHONY : CMakeFiles/Project.dir/sequential/sequential.c.o.provides
+CMakeFiles/Project.dir/sequential/sequential_solution.c.o.provides: CMakeFiles/Project.dir/sequential/sequential_solution.c.o.requires
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential_solution.c.o.provides.build
+.PHONY : CMakeFiles/Project.dir/sequential/sequential_solution.c.o.provides
 
-CMakeFiles/Project.dir/sequential/sequential.c.o.provides.build: CMakeFiles/Project.dir/sequential/sequential.c.o
+CMakeFiles/Project.dir/sequential/sequential_solution.c.o.provides.build: CMakeFiles/Project.dir/sequential/sequential_solution.c.o
 
 
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: CMakeFiles/Project.dir/flags.make
@@ -153,23 +153,75 @@ CMakeFiles/Project.dir/definitions/shared.c.o.provides: CMakeFiles/Project.dir/d
 CMakeFiles/Project.dir/definitions/shared.c.o.provides.build: CMakeFiles/Project.dir/definitions/shared.c.o
 
 
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: CMakeFiles/Project.dir/flags.make
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_cases/test_simple_matrix.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c
+
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i
+
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s
+
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.requires:
+
+.PHONY : CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.requires
+
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.provides: CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.requires
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.provides.build
+.PHONY : CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.provides
+
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.provides.build: CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
+
+
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: CMakeFiles/Project.dir/flags.make
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_cases/test_big_matrix.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c
+
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i
+
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s
+
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.requires:
+
+.PHONY : CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.requires
+
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.provides: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.requires
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.provides.build
+.PHONY : CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.provides
+
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.provides.build: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
+
+
 # Object files for target Project
 Project_OBJECTS = \
-"CMakeFiles/Project.dir/sequential/sequential.c.o" \
+"CMakeFiles/Project.dir/sequential/sequential_solution.c.o" \
 "CMakeFiles/Project.dir/pthread/pthread_solution.c.o" \
 "CMakeFiles/Project.dir/tests/test_runner.c.o" \
-"CMakeFiles/Project.dir/definitions/shared.c.o"
+"CMakeFiles/Project.dir/definitions/shared.c.o" \
+"CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o" \
+"CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o"
 
 # External object files for target Project
 Project_EXTERNAL_OBJECTS =
 
-Project: CMakeFiles/Project.dir/sequential/sequential.c.o
+Project: CMakeFiles/Project.dir/sequential/sequential_solution.c.o
 Project: CMakeFiles/Project.dir/pthread/pthread_solution.c.o
 Project: CMakeFiles/Project.dir/tests/test_runner.c.o
 Project: CMakeFiles/Project.dir/definitions/shared.c.o
+Project: CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
+Project: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
 Project: CMakeFiles/Project.dir/build.make
 Project: CMakeFiles/Project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable Project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -177,10 +229,12 @@ CMakeFiles/Project.dir/build: Project
 
 .PHONY : CMakeFiles/Project.dir/build
 
-CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/sequential/sequential.c.o.requires
+CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/sequential/sequential_solution.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/pthread/pthread_solution.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_runner.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/definitions/shared.c.o.requires
+CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.requires
+CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.requires
 
 .PHONY : CMakeFiles/Project.dir/requires
 

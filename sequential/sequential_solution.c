@@ -4,7 +4,7 @@
 
 #include <string.h>
 #include <stdlib.h>
-#include "sequential.h"
+#include "sequential_solution.h"
 #include "assert.h"
 
 
