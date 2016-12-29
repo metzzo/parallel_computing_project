@@ -66,6 +66,18 @@ stdlib.h
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.h
 
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c
+string.h
+-
+test_constant_matrix.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h
+../../definitions/shared.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+../test_runner.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
+
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h
+
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c
 string.h
 -
@@ -89,6 +101,8 @@ test_cases/test_big_matrix.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.h
 test_cases/test_simple_matrix.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.h
+test_cases/test_constant_matrix.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
 ../sequential/sequential_solution.h

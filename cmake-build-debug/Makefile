@@ -231,6 +231,33 @@ tests/test_cases/test_big_matrix.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s
 .PHONY : tests/test_cases/test_big_matrix.c.s
 
+tests/test_cases/test_constant_matrix.o: tests/test_cases/test_constant_matrix.c.o
+
+.PHONY : tests/test_cases/test_constant_matrix.o
+
+# target to build an object file
+tests/test_cases/test_constant_matrix.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
+.PHONY : tests/test_cases/test_constant_matrix.c.o
+
+tests/test_cases/test_constant_matrix.i: tests/test_cases/test_constant_matrix.c.i
+
+.PHONY : tests/test_cases/test_constant_matrix.i
+
+# target to preprocess a source file
+tests/test_cases/test_constant_matrix.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.i
+.PHONY : tests/test_cases/test_constant_matrix.c.i
+
+tests/test_cases/test_constant_matrix.s: tests/test_cases/test_constant_matrix.c.s
+
+.PHONY : tests/test_cases/test_constant_matrix.s
+
+# target to generate assembly for a file
+tests/test_cases/test_constant_matrix.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.s
+.PHONY : tests/test_cases/test_constant_matrix.c.s
+
 tests/test_cases/test_simple_matrix.o: tests/test_cases/test_simple_matrix.c.o
 
 .PHONY : tests/test_cases/test_simple_matrix.o
@@ -306,6 +333,9 @@ help:
 	@echo "... tests/test_cases/test_big_matrix.o"
 	@echo "... tests/test_cases/test_big_matrix.i"
 	@echo "... tests/test_cases/test_big_matrix.s"
+	@echo "... tests/test_cases/test_constant_matrix.o"
+	@echo "... tests/test_cases/test_constant_matrix.i"
+	@echo "... tests/test_cases/test_constant_matrix.s"
 	@echo "... tests/test_cases/test_simple_matrix.o"
 	@echo "... tests/test_cases/test_simple_matrix.i"
 	@echo "... tests/test_cases/test_simple_matrix.s"

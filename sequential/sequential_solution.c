@@ -22,9 +22,7 @@ void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
             }
         }
 
-
         memcpy(last_row, data->top, (data->column_count + 2)*sizeof(int));
-
 
         current_row[0] = data->left[0];
         memcpy(&current_row[1], data->matrix, data->column_count * sizeof(int));

@@ -18,7 +18,7 @@ void test_simple_matrix(int thread_count) {
     };
 
     int input_matrix2[matrix_size];
-    memcpy(&input_matrix2, input_matrix2, sizeof(int) * matrix_size);
+    memcpy(&input_matrix2, input_matrix1, sizeof(int) * matrix_size);
 
     BOUNDARY boundaries_top_bottom = (int[6]) {1,2,3,4,5,6};
     BOUNDARY boundaries_left_right = (int[4]) {5,6,7,8};
@@ -65,6 +65,6 @@ void test_simple_matrix(int thread_count) {
     check_equal(&datas1, &expected_datas);
 
     printf("pThread Implementation\n");
-    stencil_pthread(&datas1, &stencils, thread_count);
+    stencil_pthread(&datas2, &stencils, thread_count);
     check_equal(&datas2, &expected_datas);
 }

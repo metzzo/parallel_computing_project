@@ -11,16 +11,25 @@
 
 #include "test_cases/test_big_matrix.h"
 #include "test_cases/test_simple_matrix.h"
+#include "test_cases/test_constant_matrix.h"
 
 int main(int argc, char **args) {
-    printf("Test Simple Matrix \n");
-    test_simple_matrix(4);
-    printf("Success pthread \n");
+    printf("---------------------------------------\n");
+    printf("Test Constant Matrix \n");
+    test_constant_matrix(8, 8, 8, 1);
+    printf("Success Constant Matrix \n");
 
+    printf("---------------------------------------\n");
+    printf("Test Simple Matrix \n");
+    test_simple_matrix(2);
+    printf("Success Simple Matrix \n");
+
+    printf("---------------------------------------\n");
     printf("Test Big Matrix\n");
-    test_big_matrix(100, 100, 4, 4);
+    test_big_matrix(4, 4, 1, 1);
     printf("Success Big Matrix\n");
 
+    printf("---------------------------------------\n");
     printf("All tests finished successfully\n");
 
     return 0;
@@ -48,7 +57,20 @@ void check_equal(MATRIX_DATA *a, MATRIX_DATA *b) {
 
     for (int i = 0; i < a->row_count; i++) {
         for (int j = 0; j < a->column_count; j++) {
-            assert(a->matrix[MATRIX_POSITION(i, j, a)] == b->matrix[MATRIX_POSITION(i, j, b)]);
+            if (a->matrix[MATRIX_POSITION(i, j, a)] != b->matrix[MATRIX_POSITION(i, j, b)]) {
+                printf("check_equal failed\n---------------------------------------\n");
+
+                fprintf(stderr, "Row %d, Column %d, a[row,column] = %d, b[row, column] = %d\n", i, j,
+                        a->matrix[MATRIX_POSITION(i, j, a)], b->matrix[MATRIX_POSITION(i, j, b)]);
+
+                printf("Matrix a:\n");
+                print_matrix(a);
+
+                printf("Matrix b:\n");
+                print_matrix(b);
+
+                assert(0 && "Matrix a and b are not the same.");
+            }
         }
     }
 
@@ -62,5 +84,3 @@ void check_equal(MATRIX_DATA *a, MATRIX_DATA *b) {
         assert(a->right[i] == b->right[i]);
     }
 }
-
-

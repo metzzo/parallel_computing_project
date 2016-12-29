@@ -18,6 +18,13 @@ CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../sequential/seque
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_cases/test_big_matrix.c
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_runner.h
 
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../pthread/pthread_solution.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../sequential/sequential_solution.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_cases/test_constant_matrix.c
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_cases/test_constant_matrix.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_runner.h
+
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../definitions/shared.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../sequential/sequential_solution.h
@@ -28,6 +35,7 @@ CMakeFiles/Project.dir/tests/test_runner.c.o: ../definitions/shared.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_cases/test_big_matrix.h
+CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_cases/test_constant_matrix.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_cases/test_simple_matrix.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_runner.c
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_runner.h

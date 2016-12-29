@@ -106,6 +106,12 @@
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.h">
 			<Option target="Project"/>
 		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h">
+			<Option target="Project"/>
+		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c">
 			<Option target="Project"/>
 		</Unit>

@@ -25,17 +25,17 @@ int get_matrix_value(int row, int column, MATRIX_DATA *data) {
 void print_matrix(MATRIX_DATA *data) {
     for (int row = 0; row < data->row_count; row++) {
         for (int column = 0; column < data->column_count; column++) {
-            DEBUG_LOG("%d\t", data->matrix[MATRIX_POSITION(row, column, data)]);
+            printf("%d\t", data->matrix[MATRIX_POSITION(row, column, data)]);
         }
-        DEBUG_LOG("\n");
+        printf("\n");
     }
-    DEBUG_LOG("\n");
+    printf("\n");
 }
 
 void print_vector(INT_MATRIX data, int vector_size) {
     for (int row = 0; row < vector_size; row++) {
-        DEBUG_LOG("%d\t", data[row]);
+        printf("%d\t", data[row]);
     }
-    DEBUG_LOG("\n");
+    printf("\n");
 }
 
