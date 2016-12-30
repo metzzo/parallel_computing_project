@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "sequential_solution.h"
 #include "assert.h"
-
+#include "../definitions/shared.h"
 
 
 void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {

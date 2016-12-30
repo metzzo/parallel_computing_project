@@ -20,12 +20,10 @@ struct thread_info {
     int start_index, end_index;
     int index;
 
-    sem_t *condMineTop, *condMineBottom;
-    sem_t *condOtherTop, *condOtherBottom;
+    sem_t *semMineTop, *semMineBottom;
+    sem_t *semOtherTop, *semOtherBottom;
 
     pthread_mutex_t *debug_mutex;
-
-    int hasOtherTop, hasOtherBottom;
 
     MATRIX_DATA *data;
     STENCIL *stencil;
@@ -77,6 +75,7 @@ static void* calculate_submatrix(void *arg){
             }
         }
 
+        // TODO: only copy needed rows
         if (tinfo->start_index == 0) {
             memcpy(last_row, data->top, (data->column_count + 2) * sizeof(int));
 
@@ -120,7 +119,7 @@ static void* calculate_submatrix(void *arg){
                 }
             }
 
-            if (row < data->row_count - 1) {
+            if (row < tinfo->end_index - 1) {
                 values[0][0] = current_row[0];
                 values[0][1] = current_row[1];
                 values[0][2] = current_row[2];
@@ -145,30 +144,30 @@ static void* calculate_submatrix(void *arg){
             if (row == tinfo->start_index) {
                 THREAD_DEBUG_LOG(tinfo, "CondMineTop Semaphore Post in Thread %d\n", tinfo->index);
 
-                sem_post(tinfo->condMineTop);
+                sem_post(tinfo->semMineTop);
             }
 
             if (row == tinfo->end_index - 1) {
                 THREAD_DEBUG_LOG(tinfo, "CondMineBottom Semaphore Post in Thread %d\n", tinfo->index);
 
-                sem_post(tinfo->condMineBottom);
+                sem_post(tinfo->semMineBottom);
             }
         }
 
-        if (tinfo->hasOtherBottom) {
+        if (tinfo->semOtherTop != SEM_FAILED) {
             THREAD_DEBUG_LOG(tinfo, "CondOtherBottom Semaphore Wait in Thread %d\n", tinfo->index);
 
-            sem_wait(tinfo->condOtherBottom);
+            sem_wait(tinfo->semOtherTop);
         }
 
         thread_print_matrix(tinfo, "Before copying bottom_row");
 
         memcpy(&data->matrix[MATRIX_POSITION((tinfo->end_index - 1), 0, data)], &bottom_row[0], data->column_count * sizeof(int));
 
-        if (tinfo->hasOtherTop) {
+        if (tinfo->semOtherBottom != SEM_FAILED) {
             THREAD_DEBUG_LOG(tinfo, "CondOtherTop Semaphore Wait in Thread %d\n", tinfo->index);
 
-            sem_wait(tinfo->condOtherTop);
+            sem_wait(tinfo->semOtherBottom);
         }
         thread_print_matrix_and_vector(tinfo, bottom_row, data->column_count, "After copying bottom_row, before copying top_row");
 
@@ -183,7 +182,16 @@ static void* calculate_submatrix(void *arg){
     return NULL;
 }
 
-#define SEMAPHORE_NAME "aa_%d"
+#define SEMAPHORE_NAME "semaphore4_%d"
+
+sem_t *create_semaphore(const char *name) {
+    sem_t *result = sem_open(name, O_CREAT | O_EXCL, 0600, 0);
+    if (result == SEM_FAILED) {
+        DEBUG_LOG("Failed to instantiate Semaphore %s\n", name);
+        assert(0);
+    }
+    return result;
+}
 
 void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
     if (thread_count > data->column_count) {
@@ -200,8 +208,6 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         tinfo[i].end_index = data->column_count/thread_count * (i + 1);
         tinfo[i].data = data;
         tinfo[i].stencil = stencil;
-        tinfo[i].hasOtherBottom = 0;
-        tinfo[i].hasOtherTop = 0;
         tinfo[i].debug_mutex = &debug_mutex;
 
         char sem1[20], sem2[20];
@@ -210,30 +216,42 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         sem_unlink(sem1);
         sem_unlink(sem2);
 
-        tinfo[i].condMineTop = sem_open(sem1, 0);
-        tinfo[i].condMineBottom = sem_open(sem2, 0);
-    }
-    for (int i = 0; i < thread_count && thread_count > 1; i++) {
-        if (i == thread_count - 1) {
-            tinfo[i].condOtherTop = tinfo[i-1].condMineBottom;
-            tinfo[i].hasOtherTop = 1;
-        } else if (i == 0) {
-            tinfo[i].condOtherBottom = tinfo[i+1].condMineTop;
-            tinfo[i].hasOtherBottom = 1;
+        if (i == 0) {
+            tinfo[i].semMineBottom = create_semaphore(sem2);
+            tinfo[i].semMineTop = SEM_FAILED;
+        } else if (i < thread_count -1) {
+            tinfo[i].semMineBottom = create_semaphore(sem2);
+            tinfo[i].semMineTop = create_semaphore(sem1);
         } else {
-            tinfo[i].condOtherBottom = tinfo[i-1].condMineTop;
-            tinfo[i].condOtherTop = tinfo[i+1].condMineBottom;
-
-            tinfo[i].hasOtherTop = 1;
-            tinfo[i].hasOtherBottom = 1;
+            tinfo[i].semMineTop = create_semaphore(sem1);
+            tinfo[i].semMineBottom = SEM_FAILED;
         }
     }
-    DEBUG_LOG("Stancil on Matrix: \n");
+
+    for (int i = 0; i < thread_count; i++) {
+        if (i == 0) {
+            tinfo[i].semOtherBottom = SEM_FAILED;
+            tinfo[i].semOtherTop = tinfo[i+1].semMineTop;
+        } else if (i < thread_count - 1) {
+            tinfo[i].semOtherBottom = tinfo[i-1].semMineBottom;
+            tinfo[i].semOtherTop = tinfo[i+1].semMineTop;
+        } else {
+            tinfo[i].semOtherTop = SEM_FAILED;
+            tinfo[i].semOtherBottom = tinfo[i-1].semMineBottom;
+        }
+    }
+
+    DEBUG_LOG("Apply stencil on Matrix: \n");
     DEBUG_PRINT_MATRIX(data);
 
     for (int i = 0; i < thread_count; i++) {
-        DEBUG_LOG("Create Instance: Index %d, Start: %d, End: %d Has Other Top: %d Has Other Bottom: %d\n", tinfo[i].index, tinfo[i].start_index, tinfo[i].end_index, tinfo[i].hasOtherTop, tinfo[i].hasOtherBottom);
+        DEBUG_LOG("Create Instance: Index %d, Start: %d, End: %d\n",
+                  tinfo[i].index, tinfo[i].start_index, tinfo[i].end_index);
+        DEBUG_LOG("Instances Semaphores: Mine Top: %d, Mine Bottom: %d\n",
+                  (int) tinfo[i].semMineTop, (int) tinfo[i].semMineBottom);
+    }
 
+    for (int i = 0; i < thread_count; i++) {
         pthread_create(&tinfo[i].thread_id, NULL, &calculate_submatrix, &tinfo[i]);
     }
 
@@ -244,8 +262,8 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
     }
 
     for (int i = 0; i < thread_count; i++) {
-        sem_close(tinfo[i].condMineBottom);
-        sem_close(tinfo[i].condMineTop);
+        sem_close(tinfo[i].semMineBottom);
+        sem_close(tinfo[i].semMineTop);
 
         char sem1[20], sem2[20];
         sprintf(&sem1[0], SEMAPHORE_NAME, i * 2);
