@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.h">
+			<Option target="Project"/>
+		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c">
 			<Option target="Project"/>
 		</Unit>

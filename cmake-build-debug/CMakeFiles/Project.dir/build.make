@@ -60,15 +60,15 @@ include CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/sequential/sequential_solution.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/sequential/sequential_solution.c.o: ../sequential/sequential_solution.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Project.dir/sequential/sequential_solution.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/sequential/sequential_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/sequential/sequential_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c
 
 CMakeFiles/Project.dir/sequential/sequential_solution.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/sequential/sequential_solution.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c > CMakeFiles/Project.dir/sequential/sequential_solution.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c > CMakeFiles/Project.dir/sequential/sequential_solution.c.i
 
 CMakeFiles/Project.dir/sequential/sequential_solution.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/sequential/sequential_solution.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c -o CMakeFiles/Project.dir/sequential/sequential_solution.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c -o CMakeFiles/Project.dir/sequential/sequential_solution.c.s
 
 CMakeFiles/Project.dir/sequential/sequential_solution.c.o.requires:
 
@@ -84,15 +84,15 @@ CMakeFiles/Project.dir/sequential/sequential_solution.c.o.provides.build: CMakeF
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../pthread/pthread_solution.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Project.dir/pthread/pthread_solution.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/pthread/pthread_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/pthread/pthread_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c
 
 CMakeFiles/Project.dir/pthread/pthread_solution.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/pthread/pthread_solution.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c > CMakeFiles/Project.dir/pthread/pthread_solution.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c > CMakeFiles/Project.dir/pthread/pthread_solution.c.i
 
 CMakeFiles/Project.dir/pthread/pthread_solution.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/pthread/pthread_solution.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c -o CMakeFiles/Project.dir/pthread/pthread_solution.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c -o CMakeFiles/Project.dir/pthread/pthread_solution.c.s
 
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o.requires:
 
@@ -108,15 +108,15 @@ CMakeFiles/Project.dir/pthread/pthread_solution.c.o.provides.build: CMakeFiles/P
 CMakeFiles/Project.dir/tests/test_runner.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_runner.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Project.dir/tests/test_runner.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_runner.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_runner.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c
 
 CMakeFiles/Project.dir/tests/test_runner.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_runner.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c > CMakeFiles/Project.dir/tests/test_runner.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c > CMakeFiles/Project.dir/tests/test_runner.c.i
 
 CMakeFiles/Project.dir/tests/test_runner.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_runner.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c -o CMakeFiles/Project.dir/tests/test_runner.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c -o CMakeFiles/Project.dir/tests/test_runner.c.s
 
 CMakeFiles/Project.dir/tests/test_runner.c.o.requires:
 
@@ -132,15 +132,15 @@ CMakeFiles/Project.dir/tests/test_runner.c.o.provides.build: CMakeFiles/Project.
 CMakeFiles/Project.dir/definitions/shared.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/definitions/shared.c.o: ../definitions/shared.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Project.dir/definitions/shared.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/definitions/shared.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/definitions/shared.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c
 
 CMakeFiles/Project.dir/definitions/shared.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/definitions/shared.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c > CMakeFiles/Project.dir/definitions/shared.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c > CMakeFiles/Project.dir/definitions/shared.c.i
 
 CMakeFiles/Project.dir/definitions/shared.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/definitions/shared.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c -o CMakeFiles/Project.dir/definitions/shared.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c -o CMakeFiles/Project.dir/definitions/shared.c.s
 
 CMakeFiles/Project.dir/definitions/shared.c.o.requires:
 
@@ -156,15 +156,15 @@ CMakeFiles/Project.dir/definitions/shared.c.o.provides.build: CMakeFiles/Project
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_cases/test_simple_matrix.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c
 
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i
 
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s
 
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.requires:
 
@@ -180,15 +180,15 @@ CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o.provides.build: C
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_cases/test_big_matrix.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c
 
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i
 
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s
 
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.requires:
 
@@ -204,15 +204,15 @@ CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.provides.build: CMak
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_cases/test_constant_matrix.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c
 
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c > CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.i
 
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c -o CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.s
 
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o.requires:
 
@@ -228,15 +228,15 @@ CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o.provides.build:
 CMakeFiles/Project.dir/openmp/openmp_solution.c.o: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../openmp/openmp_solution.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Project.dir/openmp/openmp_solution.c.o"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/openmp/openmp_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/openmp/openmp_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c
 
 CMakeFiles/Project.dir/openmp/openmp_solution.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/openmp/openmp_solution.c.i"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c > CMakeFiles/Project.dir/openmp/openmp_solution.c.i
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c > CMakeFiles/Project.dir/openmp/openmp_solution.c.i
 
 CMakeFiles/Project.dir/openmp/openmp_solution.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/openmp/openmp_solution.c.s"
-	/usr/local/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c -o CMakeFiles/Project.dir/openmp/openmp_solution.c.s
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c -o CMakeFiles/Project.dir/openmp/openmp_solution.c.s
 
 CMakeFiles/Project.dir/openmp/openmp_solution.c.o.requires:
 
@@ -249,6 +249,30 @@ CMakeFiles/Project.dir/openmp/openmp_solution.c.o.provides: CMakeFiles/Project.d
 CMakeFiles/Project.dir/openmp/openmp_solution.c.o.provides.build: CMakeFiles/Project.dir/openmp/openmp_solution.c.o
 
 
+CMakeFiles/Project.dir/cilk/cilk_solution.c.o: CMakeFiles/Project.dir/flags.make
+CMakeFiles/Project.dir/cilk/cilk_solution.c.o: ../cilk/cilk_solution.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/Project.dir/cilk/cilk_solution.c.o"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/cilk/cilk_solution.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.c
+
+CMakeFiles/Project.dir/cilk/cilk_solution.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/cilk/cilk_solution.c.i"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.c > CMakeFiles/Project.dir/cilk/cilk_solution.c.i
+
+CMakeFiles/Project.dir/cilk/cilk_solution.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/cilk/cilk_solution.c.s"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.c -o CMakeFiles/Project.dir/cilk/cilk_solution.c.s
+
+CMakeFiles/Project.dir/cilk/cilk_solution.c.o.requires:
+
+.PHONY : CMakeFiles/Project.dir/cilk/cilk_solution.c.o.requires
+
+CMakeFiles/Project.dir/cilk/cilk_solution.c.o.provides: CMakeFiles/Project.dir/cilk/cilk_solution.c.o.requires
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/cilk/cilk_solution.c.o.provides.build
+.PHONY : CMakeFiles/Project.dir/cilk/cilk_solution.c.o.provides
+
+CMakeFiles/Project.dir/cilk/cilk_solution.c.o.provides.build: CMakeFiles/Project.dir/cilk/cilk_solution.c.o
+
+
 # Object files for target Project
 Project_OBJECTS = \
 "CMakeFiles/Project.dir/sequential/sequential_solution.c.o" \
@@ -258,7 +282,8 @@ Project_OBJECTS = \
 "CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o" \
 "CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o" \
 "CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o" \
-"CMakeFiles/Project.dir/openmp/openmp_solution.c.o"
+"CMakeFiles/Project.dir/openmp/openmp_solution.c.o" \
+"CMakeFiles/Project.dir/cilk/cilk_solution.c.o"
 
 # External object files for target Project
 Project_EXTERNAL_OBJECTS =
@@ -271,9 +296,10 @@ Project: CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
 Project: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
 Project: CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
 Project: CMakeFiles/Project.dir/openmp/openmp_solution.c.o
+Project: CMakeFiles/Project.dir/cilk/cilk_solution.c.o
 Project: CMakeFiles/Project.dir/build.make
 Project: CMakeFiles/Project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable Project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable Project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -289,6 +315,7 @@ CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_si
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/openmp/openmp_solution.c.o.requires
+CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/cilk/cilk_solution.c.o.requires
 
 .PHONY : CMakeFiles/Project.dir/requires
 

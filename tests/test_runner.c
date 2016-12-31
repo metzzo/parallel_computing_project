@@ -14,7 +14,12 @@
 #include "test_cases/test_simple_matrix.h"
 #include "test_cases/test_constant_matrix.h"
 
+double mytime(void);
+
 int main(int argc, char **args) {
+    //printf("Benchmark:\n");
+    //test_big_matrix(3, 3, 2, 2);
+
     printf("---------------------------------------\n");
     printf("Test Constant Matrix \n");
     for (int row_count = 1; row_count < 20; row_count++) {
@@ -31,12 +36,12 @@ int main(int argc, char **args) {
 
     printf("---------------------------------------\n");
     printf("Test Simple Matrix \n");
-    test_simple_matrix(2);
+    test_simple_matrix(5);
     printf("Success Simple Matrix \n");
 
     printf("---------------------------------------\n");
     printf("Test Big Matrix\n");
-    test_big_matrix(4, 4, 1, 1);
+    test_big_matrix(4, 4, 4, 4);
     printf("Success Big Matrix\n");
 
     printf("---------------------------------------\n");
@@ -93,4 +98,21 @@ void check_equal(MATRIX_DATA *a, MATRIX_DATA *b) {
         assert(a->left[i] == b->left[i]);
         assert(a->right[i] == b->right[i]);
     }
+}
+
+double started_time;
+void start_timer() {
+    started_time = mytime();
+}
+
+void end_timer(const char * msg) {
+    printf("Stopped time for %s: %.3f\n", msg, (float)(mytime() - started_time));
+    started_time = 0;
+}
+
+#include <sys/time.h>
+double mytime(void)  {
+    struct timeval now; gettimeofday(&now,NULL);
+    return (double)((long long)now.tv_usec+
+    (long long)now.tv_sec*1000000);
 }

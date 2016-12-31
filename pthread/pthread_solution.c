@@ -175,6 +175,8 @@ static void* calculate_submatrix(void *arg){
 
     free(last_row);
     free(current_row);
+    free(top_row);
+    free(bottom_row);
 
     return NULL;
 }
@@ -246,8 +248,6 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
     for (int i = 0; i < thread_count; i++) {
         DEBUG_LOG("Create Instance: Index %d, Start: %d, End: %d\n",
                   tinfo[i].index, tinfo[i].start_index, tinfo[i].end_index);
-        DEBUG_LOG("Instances Semaphores: Mine Top: %d, Mine Bottom: %d\n",
-                  (int) tinfo[i].semMineTop, (int) tinfo[i].semMineBottom);
     }
 
     for (int i = 0; i < thread_count; i++) {

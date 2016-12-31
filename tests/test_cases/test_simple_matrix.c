@@ -20,6 +20,12 @@ void test_simple_matrix(int thread_count) {
     int input_matrix2[matrix_size];
     memcpy(&input_matrix2, input_matrix1, sizeof(int) * matrix_size);
 
+    int input_matrix3[matrix_size];
+    memcpy(&input_matrix3, input_matrix1, sizeof(int) * matrix_size);
+
+    int input_matrix4[matrix_size];
+    memcpy(&input_matrix4, input_matrix1, sizeof(int) * matrix_size);
+
     BOUNDARY boundaries_top_bottom = (int[6]) {1,2,3,4,5,6};
     BOUNDARY boundaries_left_right = (int[4]) {5,6,7,8};
 
@@ -33,6 +39,22 @@ void test_simple_matrix(int thread_count) {
 
     MATRIX_DATA datas2 = {
             input_matrix2, 4, 4,
+            boundaries_top_bottom,
+            boundaries_top_bottom,
+            boundaries_left_right,
+            boundaries_left_right
+    };
+
+    MATRIX_DATA datas3 = {
+            input_matrix3, 4, 4,
+            boundaries_top_bottom,
+            boundaries_top_bottom,
+            boundaries_left_right,
+            boundaries_left_right
+    };
+
+    MATRIX_DATA datas4 = {
+            input_matrix4, 4, 4,
             boundaries_top_bottom,
             boundaries_top_bottom,
             boundaries_left_right,
@@ -67,4 +89,12 @@ void test_simple_matrix(int thread_count) {
     printf("pThread Implementation\n");
     stencil_pthread(&datas2, &stencils, thread_count);
     check_equal(&datas2, &expected_datas);
+
+    printf("OpenMP Implementation \n");
+    stencil_openmp(&datas3, &stencils);
+    check_equal(&datas3, &expected_datas);
+
+    printf("Cilk Implementation \n");
+    stencil_cilk(&datas4, &stencils, thread_count);
+    check_equal(&datas4, &expected_datas);
 }

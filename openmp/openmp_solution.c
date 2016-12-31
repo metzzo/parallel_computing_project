@@ -122,5 +122,8 @@ void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
 
         free(last_row);
         free(current_row);
+
+        free(top_row);
+        free(bottom_row);
     }
 }

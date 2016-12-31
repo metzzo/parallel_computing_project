@@ -123,6 +123,33 @@ Project/fast:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/build
 .PHONY : Project/fast
 
+cilk/cilk_solution.o: cilk/cilk_solution.c.o
+
+.PHONY : cilk/cilk_solution.o
+
+# target to build an object file
+cilk/cilk_solution.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/cilk/cilk_solution.c.o
+.PHONY : cilk/cilk_solution.c.o
+
+cilk/cilk_solution.i: cilk/cilk_solution.c.i
+
+.PHONY : cilk/cilk_solution.i
+
+# target to preprocess a source file
+cilk/cilk_solution.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/cilk/cilk_solution.c.i
+.PHONY : cilk/cilk_solution.c.i
+
+cilk/cilk_solution.s: cilk/cilk_solution.c.s
+
+.PHONY : cilk/cilk_solution.s
+
+# target to generate assembly for a file
+cilk/cilk_solution.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/cilk/cilk_solution.c.s
+.PHONY : cilk/cilk_solution.c.s
+
 definitions/shared.o: definitions/shared.c.o
 
 .PHONY : definitions/shared.o
@@ -348,6 +375,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Project"
+	@echo "... cilk/cilk_solution.o"
+	@echo "... cilk/cilk_solution.i"
+	@echo "... cilk/cilk_solution.s"
 	@echo "... definitions/shared.o"
 	@echo "... definitions/shared.i"
 	@echo "... definitions/shared.s"
