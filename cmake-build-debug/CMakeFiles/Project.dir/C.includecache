@@ -18,6 +18,26 @@ assert.h
 stdio.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/stdio.h
 
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c
+libiomp/omp.h
+-
+string.h
+-
+stdlib.h
+-
+openmp_solution.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
+assert.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/assert.h
+../definitions/shared.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+sys/param.h
+-
+
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
+../definitions/shared.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c
 string.h
 -
@@ -27,13 +47,9 @@ pthread_solution.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
 assert.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/assert.h
-../definitions/shared.h
-/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
 pthread.h
 -
 semaphore.h
--
-stdio.h
 -
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
@@ -47,8 +63,6 @@ stdlib.h
 -
 sequential_solution.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
-assert.h
-/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/assert.h
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
 ../definitions/shared.h
@@ -93,6 +107,8 @@ stdio.h
 -
 assert.h
 -
+libiomp/omp.h
+-
 ../definitions/shared.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
 test_runner.h
@@ -109,4 +125,6 @@ test_cases/test_constant_matrix.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
 ../pthread/pthread_solution.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
+../openmp/openmp_solution.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
 

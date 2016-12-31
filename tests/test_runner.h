@@ -7,6 +7,7 @@
 
 #include "../sequential/sequential_solution.h"
 #include "../pthread/pthread_solution.h"
+#include "../openmp/openmp_solution.h"
 
 void check_equal(MATRIX_DATA *a, MATRIX_DATA *b);
 int add_stencil_func(int values[3][3]);

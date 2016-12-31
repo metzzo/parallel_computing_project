@@ -150,6 +150,33 @@ definitions/shared.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/definitions/shared.c.s
 .PHONY : definitions/shared.c.s
 
+openmp/openmp_solution.o: openmp/openmp_solution.c.o
+
+.PHONY : openmp/openmp_solution.o
+
+# target to build an object file
+openmp/openmp_solution.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/openmp/openmp_solution.c.o
+.PHONY : openmp/openmp_solution.c.o
+
+openmp/openmp_solution.i: openmp/openmp_solution.c.i
+
+.PHONY : openmp/openmp_solution.i
+
+# target to preprocess a source file
+openmp/openmp_solution.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/openmp/openmp_solution.c.i
+.PHONY : openmp/openmp_solution.c.i
+
+openmp/openmp_solution.s: openmp/openmp_solution.c.s
+
+.PHONY : openmp/openmp_solution.s
+
+# target to generate assembly for a file
+openmp/openmp_solution.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/openmp/openmp_solution.c.s
+.PHONY : openmp/openmp_solution.c.s
+
 pthread/pthread_solution.o: pthread/pthread_solution.c.o
 
 .PHONY : pthread/pthread_solution.o
@@ -324,6 +351,9 @@ help:
 	@echo "... definitions/shared.o"
 	@echo "... definitions/shared.i"
 	@echo "... definitions/shared.s"
+	@echo "... openmp/openmp_solution.o"
+	@echo "... openmp/openmp_solution.i"
+	@echo "... openmp/openmp_solution.s"
 	@echo "... pthread/pthread_solution.o"
 	@echo "... pthread/pthread_solution.i"
 	@echo "... pthread/pthread_solution.s"

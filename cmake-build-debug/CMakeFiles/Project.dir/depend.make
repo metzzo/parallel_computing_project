@@ -4,6 +4,10 @@
 CMakeFiles/Project.dir/definitions/shared.c.o: ../definitions/shared.c
 CMakeFiles/Project.dir/definitions/shared.c.o: ../definitions/shared.h
 
+CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../openmp/openmp_solution.c
+CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../openmp/openmp_solution.h
+
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../definitions/shared.h
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../pthread/pthread_solution.c
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../pthread/pthread_solution.h
@@ -13,12 +17,14 @@ CMakeFiles/Project.dir/sequential/sequential_solution.c.o: ../sequential/sequent
 CMakeFiles/Project.dir/sequential/sequential_solution.c.o: ../sequential/sequential_solution.h
 
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../openmp/openmp_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_cases/test_big_matrix.c
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_runner.h
 
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../openmp/openmp_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_cases/test_constant_matrix.c
@@ -26,12 +32,14 @@ CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_runner.h
 
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../openmp/openmp_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_cases/test_simple_matrix.c
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_runner.h
 
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/tests/test_runner.c.o: ../openmp/openmp_solution.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_cases/test_big_matrix.h

@@ -4,6 +4,10 @@
 CMakeFiles/Project.dir/definitions/shared.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+CMakeFiles/Project.dir/openmp/openmp_solution.c.o
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c
@@ -14,12 +18,14 @@ CMakeFiles/Project.dir/sequential/sequential_solution.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c
@@ -27,12 +33,14 @@ CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
 CMakeFiles/Project.dir/tests/test_runner.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.h

@@ -10,7 +10,7 @@
 void test_simple_matrix(int thread_count) {
     const int matrix_size = 4*4;
 
-    int input_matrix1[matrix_size] = {
+    int input_matrix1[] = {
             1,2,3,4,
             2,3,4,5,
             3,4,5,6,
@@ -45,7 +45,7 @@ void test_simple_matrix(int thread_count) {
             1
     };
 
-    int output_matrix[matrix_size] = {
+    int output_matrix[] = {
             25, 24, 33, 42,
             33, 27, 36, 45,
             42, 36, 45, 54,

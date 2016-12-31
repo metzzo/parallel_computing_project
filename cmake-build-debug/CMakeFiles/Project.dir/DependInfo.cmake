@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.c" "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles/Project.dir/definitions/shared.c.o"
+  "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.c" "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles/Project.dir/openmp/openmp_solution.c.o"
   "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c" "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles/Project.dir/pthread/pthread_solution.c.o"
   "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.c" "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles/Project.dir/sequential/sequential_solution.c.o"
   "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c" "/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o"
@@ -16,6 +17,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/usr/local/Cellar/libiomp/20150701/inclu‌​de/libiomp"
   )
 
 # Targets to which this target links.

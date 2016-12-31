@@ -6,10 +6,8 @@
 #include <stdlib.h>
 #include "pthread_solution.h"
 #include "assert.h"
-#include "../definitions/shared.h"
 #include <pthread.h>
 #include <semaphore.h>
-#include <stdio.h>
 
 #define THREAD_DEBUG_LOG(info, fmt, ...) if (DEBUG_MODE) { do {pthread_mutex_lock(tinfo->debug_mutex); DEBUG_LOG(fmt, ##__VA_ARGS__); pthread_mutex_unlock(tinfo->debug_mutex); } while(0); };
 #define DEBUG_PRINT_MATRIX(x) if (DEBUG_MODE) {print_matrix(x); };
