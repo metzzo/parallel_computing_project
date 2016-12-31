@@ -75,7 +75,6 @@ static void* calculate_submatrix(void *arg){
             }
         }
 
-        // TODO: only copy needed rows
         if (tinfo->start_index == 0) {
             memcpy(last_row, data->top, (data->column_count + 2) * sizeof(int));
 
@@ -84,7 +83,7 @@ static void* calculate_submatrix(void *arg){
             current_row[data->column_count + 1] = data->right[0];
         } else {
             last_row[0] = data->left[tinfo->start_index - 1];
-            memcpy(&last_row[1], &matrix[MATRIX_POSITION(tinfo->start_index - 1, 0, data)], (data->column_count + 2) * sizeof(int));
+            memcpy(&last_row[1], &matrix[MATRIX_POSITION(tinfo->start_index - 1, 0, data)], data->column_count * sizeof(int));
             last_row[data->column_count + 1] = data->right[tinfo->start_index - 1];
 
             current_row[0] = data->left[tinfo->start_index];
@@ -182,7 +181,7 @@ static void* calculate_submatrix(void *arg){
     return NULL;
 }
 
-#define SEMAPHORE_NAME "semaphore4_%d"
+#define SEMAPHORE_NAME "semaphore5_%d"
 
 sem_t *create_semaphore(const char *name) {
     sem_t *result = sem_open(name, O_CREAT | O_EXCL, 0600, 0);
@@ -194,8 +193,8 @@ sem_t *create_semaphore(const char *name) {
 }
 
 void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
-    if (thread_count > data->column_count) {
-        thread_count = data->column_count;
+    if (thread_count > data->row_count) {
+        thread_count = data->row_count;
     }
 
     struct thread_info tinfo[thread_count];
@@ -204,8 +203,8 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
 
     for (int i = 0; i < thread_count; i++) {
         tinfo[i].index = i;
-        tinfo[i].start_index = data->column_count/thread_count * i;
-        tinfo[i].end_index = data->column_count/thread_count * (i + 1);
+        tinfo[i].start_index = data->row_count/thread_count * i;
+        tinfo[i].end_index = data->row_count/thread_count * (i + 1);
         tinfo[i].data = data;
         tinfo[i].stencil = stencil;
         tinfo[i].debug_mutex = &debug_mutex;
@@ -227,6 +226,8 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
             tinfo[i].semMineBottom = SEM_FAILED;
         }
     }
+
+    tinfo[thread_count - 1].end_index = data->row_count;
 
     for (int i = 0; i < thread_count; i++) {
         if (i == 0) {

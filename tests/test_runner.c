@@ -16,7 +16,16 @@
 int main(int argc, char **args) {
     printf("---------------------------------------\n");
     printf("Test Constant Matrix \n");
-    test_constant_matrix(8, 8, 8, 1);
+    for (int row_count = 1; row_count < 20; row_count++) {
+        for (int column_count = 1; column_count < 20; column_count++) {
+            printf("... with size row_count: %d column_count: %d\n", row_count, column_count);
+            for (int thread_count = 1; thread_count < 20; thread_count++) {
+                printf("... with thread_count %d\n", thread_count);
+                test_constant_matrix(row_count, column_count, thread_count, 4);
+            }
+        }
+    }
+
     printf("Success Constant Matrix \n");
 
     printf("---------------------------------------\n");

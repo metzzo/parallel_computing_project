@@ -6,7 +6,7 @@ int get_matrix_value(int row, int column, MATRIX_DATA *data) {
     assert(row >= 0);
     assert(column >= 0);
     assert(row < data->row_count + 2);
-    assert(row < data->column_count + 2);
+    assert(column < data->column_count + 2);
 
     if (row == 0) {
         return data->top[column];
