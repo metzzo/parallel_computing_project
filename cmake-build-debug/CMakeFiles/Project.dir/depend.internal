@@ -27,7 +27,9 @@ CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
@@ -36,7 +38,9 @@ CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
@@ -44,7 +48,13 @@ CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.h
+CMakeFiles/Project.dir/tests/test_generator.c.o
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.c
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.h
 CMakeFiles/Project.dir/tests/test_runner.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cilk/cilk_solution.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
@@ -56,3 +66,6 @@ CMakeFiles/Project.dir/tests/test_runner.c.o
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.h
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c
  /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.h
+CMakeFiles/Project.dir/tests/test_stencil.c.o
+ /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.c

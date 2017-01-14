@@ -1,76 +1,223 @@
 //
-// Created by Robert Fischer on 31.12.16.
+// Created by Robert Fischer on 14.01.17.
 //
-
-#include <libiomp/omp.h>
 
 #include <string.h>
 #include <stdlib.h>
-#include "openmp_solution.h"
+#include "mpi_solution.h"
 #include "assert.h"
 #include "../definitions/shared.h"
+#include <mpi.h>
 #include <sys/param.h>
+#include "../tests/test_generator.h"
+#include "../sequential/sequential_solution.h"
+#include "../tests/test_stencil.h"
 
+int main(int argc, char **argv) {
+    MPI_Init(&argc, &argv);
 
-void stencil_mpi(MATRIX_DATA *data, STENCIL *stencil) {
-#pragma omp parallel num_threads(MIN(omp_get_max_threads(), data->row_count))
-    {
-        int num_threads = omp_get_num_threads();
-        int thread_num = omp_get_thread_num();
+    int thread_count, thread_num;
 
-        int start_index = data->row_count / num_threads * thread_num;
-        int end_index = data->row_count / num_threads * (thread_num + 1);
+    MPI_Comm_size(MPI_COMM_WORLD, &thread_count);
+    MPI_Comm_rank(MPI_COMM_WORLD, &thread_num);
 
-        if (num_threads == thread_num + 1) {
-            end_index = data->row_count;
+    assert(argc == 5 && "argv must have 5 arguments");
+
+    const char *name = argv[1];
+    int iteration_count = (int)strtol(argv[2], NULL, 10);
+    int row_count = (int)strtol(argv[3], NULL, 10);
+    int column_count = (int)strtol(argv[4], NULL, 10);
+
+    thread_count = MIN(row_count, thread_count);
+
+    STENCIL stencil = {
+            NULL,
+            iteration_count
+    };
+    MATRIX_DATA *input_data = NULL;
+    MATRIX_DATA *input_expected_data = NULL;
+
+    if (strcmp(name, "big_matrix") == 0) {
+        stencil.stencil_func = &add_stencil_func;
+    } else if (strcmp(name, "constant_matrix") == 0) {
+        stencil.stencil_func = &increment_stencil_func;
+    } else if (strcmp(name, "simple_matrix") == 0) {
+        stencil.stencil_func = &add_stencil_func;
+    } else {
+        assert(0 && "Unknown Parameter");
+    }
+
+    if (thread_num == 0) {
+        if (strcmp(name, "big_matrix") == 0) {
+            int randomseed = rand();
+            srand(randomseed);
+            input_data = generate_big_matrix(row_count, column_count);
+
+            srand(randomseed);
+            input_expected_data = generate_big_matrix(row_count, column_count);
+            stencil_sequential(input_expected_data, &stencil);
+        } else if (strcmp(name, "constant_matrix") == 0) {
+            input_data = generate_constant_matrix(row_count, column_count);
+            input_expected_data = generate_constant_expected_matrix(row_count, column_count, iteration_count);
+        } else if (strcmp(name, "simple_matrix") == 0) {
+            assert(row_count == 4 && column_count == 4);
+            input_data = generate_simple_matrix();
+            input_expected_data = generate_simple_expected_matrix();
+        } else {
+            assert(0 && "Unknown Parameter");
         }
 
-        INT_MATRIX matrix = data->matrix;
+        // send matrix
+        INT_MATRIX boundary = malloc(sizeof(int) * (column_count + 2));
+        for (int i = 0; i < thread_count; i++) {
+            int start_index = row_count / thread_count * i;
+            int end_index = row_count / thread_count * (i + 1);
+
+            if (row_count - 1 == i) {
+                end_index = row_count;
+            }
+            int error_code = MPI_Send(&input_data->matrix[MATRIX_POSITION(start_index, 0, input_data)],
+                                      (end_index - start_index) * column_count,
+                                      MPI_INT, i, 0, MPI_COMM_WORLD);
+            if (error_code != MPI_SUCCESS) {
+                char error_string[BUFSIZ];
+                int length_of_error_string;
+
+                MPI_Error_string(error_code, error_string, &length_of_error_string);
+                printf("%3d: %s\n", thread_num, error_string);
+            }
+
+            MPI_Send(&input_expected_data->matrix[MATRIX_POSITION(start_index, 0, input_expected_data)],
+                     (end_index - start_index) * column_count,
+                     MPI_INT, i, 0, MPI_COMM_WORLD);
+
+            MPI_Send(&input_data->left[start_index], end_index - start_index, MPI_INT, i, 0, MPI_COMM_WORLD);
+            MPI_Send(&input_data->right[start_index], end_index - start_index, MPI_INT, i, 0, MPI_COMM_WORLD);
+
+            if (i == 0) {
+                MPI_Send(input_data->top, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
+            } else {
+                boundary[0] = input_data->left[start_index - 1];
+                memcpy(&boundary[1], &input_data->matrix[MATRIX_POSITION(start_index - 1, 0, input_data)], sizeof(int) * column_count);
+                boundary[column_count + 1] = input_data->right[start_index - 1];
+                MPI_Send(boundary, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
+            }
+
+            if (i == thread_count - 1) {
+                MPI_Send(input_data->bottom, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
+            } else {
+                boundary[0] = input_data->left[end_index];
+                memcpy(&boundary[1], &input_data->matrix[MATRIX_POSITION(end_index, 0, input_data)], sizeof(int) * column_count);
+                boundary[column_count + 1] = input_data->right[end_index];
+                MPI_Send(boundary, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
+            }
+        }
+        free(boundary);
+        free(input_data);
+        free(input_expected_data);
+    }
+
+    if (thread_num < row_count) {
+        printf("Current thread num %d of %d\n", thread_num, thread_count);
+
+        int abs_start_index = row_count / thread_count * thread_num;
+        int abs_end_index = row_count / thread_count * (thread_num + 1);
+
+        if (row_count - 1 == thread_num) {
+            abs_end_index = row_count;
+        }
+
+        int num_of_elements = (abs_end_index - abs_start_index) * column_count;
+        int num_of_left_right = abs_end_index - abs_start_index;
+        int num_of_top_bottom = column_count + 2;
+
+        INT_MATRIX matrix = malloc(sizeof(int) * num_of_elements);
+        INT_MATRIX expected_matrix = malloc(sizeof(int) * num_of_elements);
+
+        BOUNDARY left = malloc(sizeof(int) * num_of_left_right);
+        BOUNDARY right = malloc(sizeof(int) * num_of_left_right);
+        BOUNDARY top = NULL;
+        BOUNDARY bottom = NULL;
+        MPI_Recv(&matrix[0], num_of_elements, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        if (thread_num == 0) {
+            printf("Matrix: \n");
+            print_vector(matrix, num_of_elements);
+        }
+
+        MPI_Recv(&expected_matrix[0], num_of_elements, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        if (thread_num == 0) {
+            printf("Expected Matrix: \n");
+            print_vector(expected_matrix, num_of_elements);
+        }
+
+        MPI_Recv(left, num_of_left_right, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        if (thread_num == 0) {
+            printf("Left: \n");
+            print_vector(left, num_of_left_right);
+        }
+
+        MPI_Recv(right, num_of_left_right, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        if (thread_num == 0) {
+            printf("Right: \n");
+            print_vector(right, num_of_left_right);
+        }
+        top = malloc(sizeof(int) * num_of_top_bottom);
+        MPI_Recv(top, num_of_top_bottom, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        if (thread_num == 0) {
+            printf("Top: \n");
+            print_vector(top, num_of_top_bottom);
+        }
+
+        bottom = malloc(sizeof(int) * num_of_top_bottom);
+        MPI_Recv(bottom, num_of_top_bottom, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+        if (thread_num == 0) {
+            printf("Bottom: \n");
+            print_vector(bottom, num_of_top_bottom);
+        }
+
+
+
+        MATRIX_DATA *data = malloc(sizeof(MATRIX_DATA));
+        data->top = top;
+        data->bottom = bottom;
+        data->left = left;
+        data->right = right;
+        data->matrix = matrix;
+        data->column_count = column_count;
+        data->row_count = abs_end_index - abs_start_index;
+
+        MATRIX_DATA *expected_data = malloc(sizeof(MATRIX_DATA));
+        expected_data->top = top;
+        expected_data->bottom = bottom;
+        expected_data->left = left;
+        expected_data->right = right;
+        expected_data->matrix = expected_matrix;
+        expected_data->column_count = column_count;
+        expected_data->row_count = abs_end_index - abs_start_index;
 
         INT_MATRIX last_row = malloc(sizeof(int) * (data->column_count + 2));
         INT_MATRIX current_row = malloc(sizeof(int) * (data->column_count + 2));
 
-        INT_MATRIX top_row = malloc(sizeof(int) * data->column_count);
-        INT_MATRIX bottom_row = malloc(sizeof(int) * data->column_count);
-
-
-        for (int iteration = 0; iteration < stencil->iteration_count; iteration++) {
+        for (int iteration = 0; iteration < stencil.iteration_count; iteration++) {
             int values[3][3];
             for (int row = 0; row < 3; row++) {
                 for (int column = 0; column < 3; column++) {
-                    values[row][column] = get_matrix_value(row + start_index, column, data);
+                    values[row][column] = get_matrix_value(row, column, data);
                 }
             }
 
-            if (start_index == 0) {
-                memcpy(last_row, data->top, (data->column_count + 2) * sizeof(int));
-
-                current_row[0] = data->left[0];
-                memcpy(&current_row[1], data->matrix, data->column_count * sizeof(int));
-                current_row[data->column_count + 1] = data->right[0];
-            } else {
-                last_row[0] = data->left[start_index - 1];
-                memcpy(&last_row[1], &matrix[MATRIX_POSITION(start_index - 1, 0, data)],
-                       data->column_count * sizeof(int));
-                last_row[data->column_count + 1] = data->right[start_index - 1];
-
-                current_row[0] = data->left[start_index];
-                memcpy(&current_row[1], &data->matrix[MATRIX_POSITION(start_index, 0, data)],
-                       data->column_count * sizeof(int));
-                current_row[data->column_count + 1] = data->right[start_index];
-            }
+            memcpy(last_row, data->top, (data->column_count + 2) * sizeof(int));
+            current_row[0] = data->left[0];
+            memcpy(&current_row[1], data->matrix, data->column_count * sizeof(int));
+            current_row[data->column_count + 1] = data->right[0];
 
 
-            for (int row = start_index; row < end_index; row++) {
+            for (int row = 0; row < data->row_count; row++) {
                 for (int column = 0; column < data->column_count; column++) {
-                    int value = stencil->stencil_func(values);
-                    if (row == start_index) {
-                        top_row[column] = value;
-                    } else if (row == end_index - 1) {
-                        bottom_row[column] = value;
-                    } else {
-                        matrix[MATRIX_POSITION(row, column, data)] = value;
-                    }
+                    int value = stencil.stencil_func(values);
+                    matrix[MATRIX_POSITION(row, column, data)] = value;
+
 
                     if (column < data->column_count - 1) {
                         values[0][0] = last_row[column + 1];
@@ -87,7 +234,7 @@ void stencil_mpi(MATRIX_DATA *data, STENCIL *stencil) {
                     }
                 }
 
-                if (row < end_index - 1) {
+                if (row < data->row_count - 1) {
                     values[0][0] = current_row[0];
                     values[0][1] = current_row[1];
                     values[0][2] = current_row[2];
@@ -111,19 +258,31 @@ void stencil_mpi(MATRIX_DATA *data, STENCIL *stencil) {
                 }
             }
 
-#pragma omp barrier
-            memcpy(&data->matrix[MATRIX_POSITION((end_index - 1), 0, data)], &bottom_row[0],
-                   data->column_count * sizeof(int));
+            if (thread_num > 0) {
+                MPI_Send(matrix, column_count, MPI_INT, thread_num - 1, 0, MPI_COMM_WORLD);
+            }
 
-            memcpy(&data->matrix[MATRIX_POSITION(start_index, 0, data)], &top_row[0],
-                   data->column_count * sizeof(int));
-#pragma omp barrier
+            if (thread_num + 1 < thread_count) {
+                MPI_Send(&matrix[MATRIX_POSITION(data->row_count - 1, 0, data)], column_count,
+                         MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD);
+            }
+
+            if (thread_num > 0) {
+                MPI_Recv(&data->top[1], column_count, MPI_INT, thread_num - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            }
+
+            if (thread_num + 1 < thread_count) {
+                MPI_Recv(&data->bottom[1], column_count, MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            }
         }
 
         free(last_row);
         free(current_row);
 
-        free(top_row);
-        free(bottom_row);
-    }
+        check_equal(data, expected_data);
+
+
+    }/**/
+
+    MPI_Finalize();
 }

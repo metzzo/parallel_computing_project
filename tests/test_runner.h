@@ -9,10 +9,7 @@
 #include "../pthread/pthread_solution.h"
 #include "../openmp/openmp_solution.h"
 #include "../cilk/cilk_solution.h"
-
-void check_equal(MATRIX_DATA *a, MATRIX_DATA *b);
-int add_stencil_func(int values[3][3]);
-int increment_stencil_func(int values[3][3]);
+#include "test_stencil.h"
 
 void start_timer();
 void end_timer(const char * msg);

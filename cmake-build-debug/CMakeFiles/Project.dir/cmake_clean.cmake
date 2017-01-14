@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o"
   "CMakeFiles/Project.dir/openmp/openmp_solution.c.o"
   "CMakeFiles/Project.dir/cilk/cilk_solution.c.o"
+  "CMakeFiles/Project.dir/tests/test_generator.c.o"
+  "CMakeFiles/Project.dir/tests/test_stencil.c.o"
   "Project.pdb"
   "Project"
 )

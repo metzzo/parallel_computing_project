@@ -339,6 +339,33 @@ tests/test_cases/test_simple_matrix.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s
 .PHONY : tests/test_cases/test_simple_matrix.c.s
 
+tests/test_generator.o: tests/test_generator.c.o
+
+.PHONY : tests/test_generator.o
+
+# target to build an object file
+tests/test_generator.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_generator.c.o
+.PHONY : tests/test_generator.c.o
+
+tests/test_generator.i: tests/test_generator.c.i
+
+.PHONY : tests/test_generator.i
+
+# target to preprocess a source file
+tests/test_generator.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_generator.c.i
+.PHONY : tests/test_generator.c.i
+
+tests/test_generator.s: tests/test_generator.c.s
+
+.PHONY : tests/test_generator.s
+
+# target to generate assembly for a file
+tests/test_generator.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_generator.c.s
+.PHONY : tests/test_generator.c.s
+
 tests/test_runner.o: tests/test_runner.c.o
 
 .PHONY : tests/test_runner.o
@@ -365,6 +392,33 @@ tests/test_runner.s: tests/test_runner.c.s
 tests/test_runner.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_runner.c.s
 .PHONY : tests/test_runner.c.s
+
+tests/test_stencil.o: tests/test_stencil.c.o
+
+.PHONY : tests/test_stencil.o
+
+# target to build an object file
+tests/test_stencil.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_stencil.c.o
+.PHONY : tests/test_stencil.c.o
+
+tests/test_stencil.i: tests/test_stencil.c.i
+
+.PHONY : tests/test_stencil.i
+
+# target to preprocess a source file
+tests/test_stencil.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_stencil.c.i
+.PHONY : tests/test_stencil.c.i
+
+tests/test_stencil.s: tests/test_stencil.c.s
+
+.PHONY : tests/test_stencil.s
+
+# target to generate assembly for a file
+tests/test_stencil.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_stencil.c.s
+.PHONY : tests/test_stencil.c.s
 
 # Help Target
 help:
@@ -399,9 +453,15 @@ help:
 	@echo "... tests/test_cases/test_simple_matrix.o"
 	@echo "... tests/test_cases/test_simple_matrix.i"
 	@echo "... tests/test_cases/test_simple_matrix.s"
+	@echo "... tests/test_generator.o"
+	@echo "... tests/test_generator.i"
+	@echo "... tests/test_generator.s"
 	@echo "... tests/test_runner.o"
 	@echo "... tests/test_runner.i"
 	@echo "... tests/test_runner.s"
+	@echo "... tests/test_stencil.o"
+	@echo "... tests/test_stencil.i"
+	@echo "... tests/test_stencil.s"
 .PHONY : help
 
 

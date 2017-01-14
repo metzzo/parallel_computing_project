@@ -35,8 +35,11 @@ typedef struct {
 #define MATRIX_POSITION(row, column, matrix) ((row) * (matrix->column_count) + (column))
 
 int get_matrix_value(int row, int column, MATRIX_DATA *data);
+void free_matrixdata(MATRIX_DATA *data);
 
 void print_matrix(MATRIX_DATA *data);
 void print_vector(INT_MATRIX data, int vector_size);
+
+void check_equal(MATRIX_DATA *a, MATRIX_DATA *b);
 
 #endif //PROJECT_SHARED_H

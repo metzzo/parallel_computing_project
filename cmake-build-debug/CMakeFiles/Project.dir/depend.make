@@ -26,7 +26,9 @@ CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../openmp/openmp_so
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_cases/test_big_matrix.c
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_generator.h
 CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_runner.h
+CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o: ../tests/test_stencil.h
 
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../cilk/cilk_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../definitions/shared.h
@@ -35,7 +37,9 @@ CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../pthread/pth
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_cases/test_constant_matrix.c
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_cases/test_constant_matrix.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_generator.h
 CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_runner.h
+CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o: ../tests/test_stencil.h
 
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../cilk/cilk_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../definitions/shared.h
@@ -43,7 +47,13 @@ CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../openmp/openmp
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../pthread/pthread_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../sequential/sequential_solution.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_cases/test_simple_matrix.c
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_generator.h
 CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_runner.h
+CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o: ../tests/test_stencil.h
+
+CMakeFiles/Project.dir/tests/test_generator.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/tests/test_generator.c.o: ../tests/test_generator.c
+CMakeFiles/Project.dir/tests/test_generator.c.o: ../tests/test_generator.h
 
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../cilk/cilk_solution.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../definitions/shared.h
@@ -55,4 +65,7 @@ CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_cases/test_constant_
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_cases/test_simple_matrix.h
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_runner.c
 CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_runner.h
+CMakeFiles/Project.dir/tests/test_runner.c.o: ../tests/test_stencil.h
+
+CMakeFiles/Project.dir/tests/test_stencil.c.o: ../tests/test_stencil.c
 

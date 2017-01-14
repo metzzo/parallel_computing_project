@@ -132,10 +132,22 @@
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.h">
 			<Option target="Project"/>
 		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.h">
+			<Option target="Project"/>
+		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c">
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.h">
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/CMakeLists.txt">

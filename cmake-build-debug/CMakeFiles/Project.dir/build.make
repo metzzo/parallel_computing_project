@@ -273,6 +273,54 @@ CMakeFiles/Project.dir/cilk/cilk_solution.c.o.provides: CMakeFiles/Project.dir/c
 CMakeFiles/Project.dir/cilk/cilk_solution.c.o.provides.build: CMakeFiles/Project.dir/cilk/cilk_solution.c.o
 
 
+CMakeFiles/Project.dir/tests/test_generator.c.o: CMakeFiles/Project.dir/flags.make
+CMakeFiles/Project.dir/tests/test_generator.c.o: ../tests/test_generator.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/Project.dir/tests/test_generator.c.o"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_generator.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.c
+
+CMakeFiles/Project.dir/tests/test_generator.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_generator.c.i"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.c > CMakeFiles/Project.dir/tests/test_generator.c.i
+
+CMakeFiles/Project.dir/tests/test_generator.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_generator.c.s"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.c -o CMakeFiles/Project.dir/tests/test_generator.c.s
+
+CMakeFiles/Project.dir/tests/test_generator.c.o.requires:
+
+.PHONY : CMakeFiles/Project.dir/tests/test_generator.c.o.requires
+
+CMakeFiles/Project.dir/tests/test_generator.c.o.provides: CMakeFiles/Project.dir/tests/test_generator.c.o.requires
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_generator.c.o.provides.build
+.PHONY : CMakeFiles/Project.dir/tests/test_generator.c.o.provides
+
+CMakeFiles/Project.dir/tests/test_generator.c.o.provides.build: CMakeFiles/Project.dir/tests/test_generator.c.o
+
+
+CMakeFiles/Project.dir/tests/test_stencil.c.o: CMakeFiles/Project.dir/flags.make
+CMakeFiles/Project.dir/tests/test_stencil.c.o: ../tests/test_stencil.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/Project.dir/tests/test_stencil.c.o"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project.dir/tests/test_stencil.c.o   -c /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.c
+
+CMakeFiles/Project.dir/tests/test_stencil.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project.dir/tests/test_stencil.c.i"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.c > CMakeFiles/Project.dir/tests/test_stencil.c.i
+
+CMakeFiles/Project.dir/tests/test_stencil.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project.dir/tests/test_stencil.c.s"
+	/usr/local/bin/gcc-6  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.c -o CMakeFiles/Project.dir/tests/test_stencil.c.s
+
+CMakeFiles/Project.dir/tests/test_stencil.c.o.requires:
+
+.PHONY : CMakeFiles/Project.dir/tests/test_stencil.c.o.requires
+
+CMakeFiles/Project.dir/tests/test_stencil.c.o.provides: CMakeFiles/Project.dir/tests/test_stencil.c.o.requires
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_stencil.c.o.provides.build
+.PHONY : CMakeFiles/Project.dir/tests/test_stencil.c.o.provides
+
+CMakeFiles/Project.dir/tests/test_stencil.c.o.provides.build: CMakeFiles/Project.dir/tests/test_stencil.c.o
+
+
 # Object files for target Project
 Project_OBJECTS = \
 "CMakeFiles/Project.dir/sequential/sequential_solution.c.o" \
@@ -283,7 +331,9 @@ Project_OBJECTS = \
 "CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o" \
 "CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o" \
 "CMakeFiles/Project.dir/openmp/openmp_solution.c.o" \
-"CMakeFiles/Project.dir/cilk/cilk_solution.c.o"
+"CMakeFiles/Project.dir/cilk/cilk_solution.c.o" \
+"CMakeFiles/Project.dir/tests/test_generator.c.o" \
+"CMakeFiles/Project.dir/tests/test_stencil.c.o"
 
 # External object files for target Project
 Project_EXTERNAL_OBJECTS =
@@ -297,9 +347,11 @@ Project: CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
 Project: CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
 Project: CMakeFiles/Project.dir/openmp/openmp_solution.c.o
 Project: CMakeFiles/Project.dir/cilk/cilk_solution.c.o
+Project: CMakeFiles/Project.dir/tests/test_generator.c.o
+Project: CMakeFiles/Project.dir/tests/test_stencil.c.o
 Project: CMakeFiles/Project.dir/build.make
 Project: CMakeFiles/Project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable Project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable Project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -316,6 +368,8 @@ CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_bi
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/openmp/openmp_solution.c.o.requires
 CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/cilk/cilk_solution.c.o.requires
+CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_generator.c.o.requires
+CMakeFiles/Project.dir/requires: CMakeFiles/Project.dir/tests/test_stencil.c.o.requires
 
 .PHONY : CMakeFiles/Project.dir/requires
 
