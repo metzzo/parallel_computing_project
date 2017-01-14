@@ -89,18 +89,17 @@ void test_big_matrix(int row_count, int column_count, int thread_count, int iter
     start_timer();
     stencil_pthread(&data2, &stencil, thread_count);
     end_timer("pThread");
+    check_equal(&data1, &data2);
 
     printf("OpenMP Implementation \n");
     start_timer();
     stencil_openmp(&data3, &stencil);
     end_timer("OpenMP");
+    check_equal(&data1, &data3);
 
     printf("Cilk Implementation \n");
     start_timer();
     stencil_cilk(&data4, &stencil, thread_count);
     end_timer("Cilk");
-
-    check_equal(&data1, &data2);
-    check_equal(&data1, &data3);
     check_equal(&data1, &data4);
 }

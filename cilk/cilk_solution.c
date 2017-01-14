@@ -109,9 +109,10 @@ void stencil_calculator(CILK_INFO *info) {
 void stencil_writer(CILK_INFO *info) {
     MATRIX_DATA *data = info->data;
 
-    memcpy(&data->matrix[MATRIX_POSITION((info->end_index - 1), 0, data)], &info->bottom_row[0],
-           data->column_count * sizeof(int));
-
+    if (info->end_index - 1 != info->start_index) {
+        memcpy(&data->matrix[MATRIX_POSITION((info->end_index - 1), 0, data)], &info->bottom_row[0],
+               data->column_count * sizeof(int));
+    }
     memcpy(&data->matrix[MATRIX_POSITION(info->start_index, 0, data)], &info->top_row[0],
            data->column_count * sizeof(int));
 }
@@ -160,6 +161,4 @@ void stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         free(infos[thread_num].top_row);
         free(infos[thread_num].bottom_row);
     }
-
-    print_matrix(data);
 }

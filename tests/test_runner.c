@@ -41,7 +41,7 @@ int main(int argc, char **args) {
 
     printf("---------------------------------------\n");
     printf("Test Big Matrix\n");
-    test_big_matrix(4, 4, 4, 4);
+    test_big_matrix(500, 500, 8, 20);
     printf("Success Big Matrix\n");
 
     printf("---------------------------------------\n");

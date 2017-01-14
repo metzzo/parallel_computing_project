@@ -161,6 +161,10 @@ static void* calculate_submatrix(void *arg){
 
         memcpy(&data->matrix[MATRIX_POSITION((tinfo->end_index - 1), 0, data)], &bottom_row[0], data->column_count * sizeof(int));
 
+        if (tinfo->semMineBottom != SEM_FAILED) {
+            sem_post(tinfo->semMineBottom);
+        }
+
         if (tinfo->semOtherBottom != SEM_FAILED) {
             THREAD_DEBUG_LOG(tinfo, "CondOtherTop Semaphore Wait in Thread %d\n", tinfo->index);
 
@@ -170,7 +174,19 @@ static void* calculate_submatrix(void *arg){
 
         memcpy(&data->matrix[MATRIX_POSITION(tinfo->start_index, 0, data)], &top_row[0], data->column_count * sizeof(int));
 
+        if (tinfo->semMineTop != SEM_FAILED) {
+            sem_post(tinfo->semMineTop);
+        }
+
         thread_print_matrix_and_vector(tinfo, top_row, data->column_count, "After copying top_row");
+
+        if (tinfo->semOtherBottom != SEM_FAILED) {
+            sem_wait(tinfo->semOtherBottom);
+        }
+
+        if (tinfo->semOtherTop != SEM_FAILED) {
+            sem_wait(tinfo->semOtherTop);
+        }
     }
 
     free(last_row);
@@ -181,7 +197,7 @@ static void* calculate_submatrix(void *arg){
     return NULL;
 }
 
-#define SEMAPHORE_NAME "semaphore5_%d"
+#define SEMAPHORE_NAME "semaphore6_%d"
 
 sem_t *create_semaphore(const char *name) {
     sem_t *result = sem_open(name, O_CREAT | O_EXCL, 0600, 0);
