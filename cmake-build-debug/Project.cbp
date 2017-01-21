@@ -102,6 +102,12 @@
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/openmp/openmp_solution.h">
 			<Option target="Project"/>
 		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_barrier_osx.c">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_barrier_osx.h">
+			<Option target="Project"/>
+		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c">
 			<Option target="Project"/>
 		</Unit>

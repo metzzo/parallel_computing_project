@@ -36,6 +36,8 @@ void test_simple_matrix(int thread_count) {
     check_equal(data4, expected_data);
 
 
+    run_mpi("simple_matrix", 1, 4, 4, thread_count);
+
     free_matrixdata(data1);
     free_matrixdata(data2);
     free_matrixdata(data3);

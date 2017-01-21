@@ -11,7 +11,6 @@
 #include "../cilk/cilk_solution.h"
 #include "test_stencil.h"
 
-void start_timer();
-void end_timer(const char * msg);
+void run_mpi(char *name, int iteration_count, int row_count, int column_count, int thread_count);
 
 #endif //PROJECT_TEST_RUNNER_H

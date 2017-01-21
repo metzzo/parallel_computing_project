@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "pthread_solution.h"
 #include "assert.h"
+#include "pthread_barrier_osx.h"
 #include <pthread.h>
 #include <semaphore.h>
 
@@ -53,8 +54,19 @@ void thread_print_matrix_and_vector(struct thread_info *tinfo, INT_MATRIX vector
 #endif
 }
 
+
+double calculation_start_time;
+
+static pthread_barrier_t barrier;
+
 static void* calculate_submatrix(void *arg){
     struct thread_info *tinfo = arg;
+
+    pthread_barrier_wait(&barrier);
+    if (tinfo->index == 0) {
+        calculation_start_time = mytime();
+    }
+
     MATRIX_DATA *data = tinfo->data;
     INT_MATRIX matrix = data->matrix;
 
@@ -158,11 +170,13 @@ static void* calculate_submatrix(void *arg){
         }
 
         thread_print_matrix(tinfo, "Before copying bottom_row");
+        if (tinfo->start_index != tinfo->end_index - 1) {
+            memcpy(&data->matrix[MATRIX_POSITION((tinfo->end_index - 1), 0, data)], &bottom_row[0],
+                   data->column_count * sizeof(int));
 
-        memcpy(&data->matrix[MATRIX_POSITION((tinfo->end_index - 1), 0, data)], &bottom_row[0], data->column_count * sizeof(int));
-
-        if (tinfo->semMineBottom != SEM_FAILED) {
-            sem_post(tinfo->semMineBottom);
+            if (tinfo->semMineBottom != SEM_FAILED) {
+                sem_post(tinfo->semMineBottom);
+            }
         }
 
         if (tinfo->semOtherBottom != SEM_FAILED) {
@@ -176,6 +190,10 @@ static void* calculate_submatrix(void *arg){
 
         if (tinfo->semMineTop != SEM_FAILED) {
             sem_post(tinfo->semMineTop);
+        }
+
+        if (tinfo->start_index == tinfo->end_index - 1 && tinfo->semMineBottom != SEM_FAILED) {
+            sem_post(tinfo->semMineBottom);
         }
 
         thread_print_matrix_and_vector(tinfo, top_row, data->column_count, "After copying top_row");
@@ -197,7 +215,7 @@ static void* calculate_submatrix(void *arg){
     return NULL;
 }
 
-#define SEMAPHORE_NAME "semaphore6_%d"
+#define SEMAPHORE_NAME "semaphore7_%d"
 
 sem_t *create_semaphore(const char *name) {
     sem_t *result = sem_open(name, O_CREAT | O_EXCL, 0600, 0);
@@ -212,6 +230,7 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
     if (thread_count > data->row_count) {
         thread_count = data->row_count;
     }
+    calculation_start_time = 0;
 
     struct thread_info tinfo[thread_count];
     pthread_mutex_t debug_mutex;
@@ -266,6 +285,8 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
                   tinfo[i].index, tinfo[i].start_index, tinfo[i].end_index);
     }
 
+    pthread_barrier_init(&barrier, NULL, (unsigned int) thread_count);
+
     for (int i = 0; i < thread_count; i++) {
         pthread_create(&tinfo[i].thread_id, NULL, &calculate_submatrix, &tinfo[i]);
     }
@@ -275,6 +296,12 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
     for (int i = 0; i < thread_count; i++) {
         pthread_join(tinfo[i].thread_id, NULL);
     }
+
+    double elapsed_time = mytime() - calculation_start_time;
+    printf("Stopped time for pThread: %.3f ms\n", (float)elapsed_time);
+
+
+    pthread_barrier_destroy(&barrier);
 
     for (int i = 0; i < thread_count; i++) {
         sem_close(tinfo[i].semMineBottom);

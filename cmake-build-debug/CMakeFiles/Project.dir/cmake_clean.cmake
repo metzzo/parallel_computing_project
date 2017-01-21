@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.dir/cilk/cilk_solution.c.o"
   "CMakeFiles/Project.dir/tests/test_generator.c.o"
   "CMakeFiles/Project.dir/tests/test_stencil.c.o"
+  "CMakeFiles/Project.dir/pthread/pthread_barrier_osx.c.o"
   "Project.pdb"
   "Project"
 )

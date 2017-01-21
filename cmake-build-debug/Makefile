@@ -204,6 +204,33 @@ openmp/openmp_solution.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/openmp/openmp_solution.c.s
 .PHONY : openmp/openmp_solution.c.s
 
+pthread/pthread_barrier_osx.o: pthread/pthread_barrier_osx.c.o
+
+.PHONY : pthread/pthread_barrier_osx.o
+
+# target to build an object file
+pthread/pthread_barrier_osx.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/pthread/pthread_barrier_osx.c.o
+.PHONY : pthread/pthread_barrier_osx.c.o
+
+pthread/pthread_barrier_osx.i: pthread/pthread_barrier_osx.c.i
+
+.PHONY : pthread/pthread_barrier_osx.i
+
+# target to preprocess a source file
+pthread/pthread_barrier_osx.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/pthread/pthread_barrier_osx.c.i
+.PHONY : pthread/pthread_barrier_osx.c.i
+
+pthread/pthread_barrier_osx.s: pthread/pthread_barrier_osx.c.s
+
+.PHONY : pthread/pthread_barrier_osx.s
+
+# target to generate assembly for a file
+pthread/pthread_barrier_osx.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/pthread/pthread_barrier_osx.c.s
+.PHONY : pthread/pthread_barrier_osx.c.s
+
 pthread/pthread_solution.o: pthread/pthread_solution.c.o
 
 .PHONY : pthread/pthread_solution.o
@@ -438,6 +465,9 @@ help:
 	@echo "... openmp/openmp_solution.o"
 	@echo "... openmp/openmp_solution.i"
 	@echo "... openmp/openmp_solution.s"
+	@echo "... pthread/pthread_barrier_osx.o"
+	@echo "... pthread/pthread_barrier_osx.i"
+	@echo "... pthread/pthread_barrier_osx.s"
 	@echo "... pthread/pthread_solution.o"
 	@echo "... pthread/pthread_solution.i"
 	@echo "... pthread/pthread_solution.s"

@@ -12,7 +12,11 @@ CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../definitions/shared.h
 CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../openmp/openmp_solution.c
 CMakeFiles/Project.dir/openmp/openmp_solution.c.o: ../openmp/openmp_solution.h
 
+CMakeFiles/Project.dir/pthread/pthread_barrier_osx.c.o: ../pthread/pthread_barrier_osx.c
+CMakeFiles/Project.dir/pthread/pthread_barrier_osx.c.o: ../pthread/pthread_barrier_osx.h
+
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../definitions/shared.h
+CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../pthread/pthread_barrier_osx.h
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../pthread/pthread_solution.c
 CMakeFiles/Project.dir/pthread/pthread_solution.c.o: ../pthread/pthread_solution.h
 

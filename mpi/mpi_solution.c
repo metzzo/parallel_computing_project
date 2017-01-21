@@ -27,6 +27,7 @@ int main(int argc, char **argv) {
     int iteration_count = (int)strtol(argv[2], NULL, 10);
     int row_count = (int)strtol(argv[3], NULL, 10);
     int column_count = (int)strtol(argv[4], NULL, 10);
+    double calculation_start_time = 0;
 
     thread_count = MIN(row_count, thread_count);
 
@@ -69,7 +70,7 @@ int main(int argc, char **argv) {
 
         // send matrix
         INT_MATRIX boundary = malloc(sizeof(int) * (column_count + 2));
-        for (int i = 0; i < thread_count; i++) {
+        for (int i = 1; i < thread_count; i++) {
             int start_index = row_count / thread_count * i;
             int end_index = row_count / thread_count * (i + 1);
 
@@ -94,14 +95,10 @@ int main(int argc, char **argv) {
             MPI_Send(&input_data->left[start_index], end_index - start_index, MPI_INT, i, 0, MPI_COMM_WORLD);
             MPI_Send(&input_data->right[start_index], end_index - start_index, MPI_INT, i, 0, MPI_COMM_WORLD);
 
-            if (i == 0) {
-                MPI_Send(input_data->top, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
-            } else {
-                boundary[0] = input_data->left[start_index - 1];
-                memcpy(&boundary[1], &input_data->matrix[MATRIX_POSITION(start_index - 1, 0, input_data)], sizeof(int) * column_count);
-                boundary[column_count + 1] = input_data->right[start_index - 1];
-                MPI_Send(boundary, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
-            }
+            boundary[0] = input_data->left[start_index - 1];
+            memcpy(&boundary[1], &input_data->matrix[MATRIX_POSITION(start_index - 1, 0, input_data)], sizeof(int) * column_count);
+            boundary[column_count + 1] = input_data->right[start_index - 1];
+            MPI_Send(boundary, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
 
             if (i == thread_count - 1) {
                 MPI_Send(input_data->bottom, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
@@ -112,13 +109,12 @@ int main(int argc, char **argv) {
                 MPI_Send(boundary, column_count + 2, MPI_INT, i, 0, MPI_COMM_WORLD);
             }
         }
-        free(boundary);
-        free(input_data);
-        free(input_expected_data);
+        failsafe_free((void**)&boundary);
     }
-
+    MATRIX_DATA *data = NULL;
+    MATRIX_DATA *expected_data = NULL;
     if (thread_num < row_count) {
-        printf("Current thread num %d of %d\n", thread_num, thread_count);
+        //printf("Current thread num %d of %d\n", thread_num, thread_count);
 
         int abs_start_index = row_count / thread_count * thread_num;
         int abs_end_index = row_count / thread_count * (thread_num + 1);
@@ -134,51 +130,72 @@ int main(int argc, char **argv) {
         INT_MATRIX matrix = malloc(sizeof(int) * num_of_elements);
         INT_MATRIX expected_matrix = malloc(sizeof(int) * num_of_elements);
 
-        BOUNDARY left = malloc(sizeof(int) * num_of_left_right);
-        BOUNDARY right = malloc(sizeof(int) * num_of_left_right);
+        BOUNDARY left = NULL;
+        BOUNDARY right = NULL;
         BOUNDARY top = NULL;
         BOUNDARY bottom = NULL;
-        MPI_Recv(&matrix[0], num_of_elements, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        if (thread_num == 0) {
-            printf("Matrix: \n");
-            print_vector(matrix, num_of_elements);
+
+        if (thread_num > 0) {
+            MPI_Recv(&matrix[0], num_of_elements, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            /*if (thread_num == 0) {
+                printf("Matrix: \n");
+                print_vector(matrix, num_of_elements);
+            }*/
+
+            MPI_Recv(&expected_matrix[0], num_of_elements, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            /*if (thread_num == 0) {
+                printf("Expected Matrix: \n");
+                print_vector(expected_matrix, num_of_elements);
+            }*/
+
+            left = malloc(sizeof(int) * num_of_left_right);
+            MPI_Recv(left, num_of_left_right, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            /*if (thread_num == 0) {
+                printf("Left: \n");
+                print_vector(left, num_of_left_right);
+            }*/
+
+            right = malloc(sizeof(int) * num_of_left_right);
+            MPI_Recv(right, num_of_left_right, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            /*if (thread_num == 0) {
+                printf("Right: \n");
+                print_vector(right, num_of_left_right);
+            }*/
+            top = malloc(sizeof(int) * num_of_top_bottom);
+            MPI_Recv(top, num_of_top_bottom, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            /*if (thread_num == 0) {
+                printf("Top: \n");
+                print_vector(top, num_of_top_bottom);
+            }*/
+
+            bottom = malloc(sizeof(int) * num_of_top_bottom);
+            MPI_Recv(bottom, num_of_top_bottom, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+            /*if (thread_num == 0) {
+                printf("Bottom: \n");
+                print_vector(bottom, num_of_top_bottom);
+            }*/
+        } else {
+            //printf("States %d: %p %p %p %p %p\n", thread_num, &input_data->matrix[0], input_expected_data->matrix, input_data->left,
+            //       input_data->right, input_data->top, input_data->bottom);
+            matrix = input_data->matrix;
+            expected_matrix = input_expected_data->matrix;
+            left = input_data->left;
+            right = input_data->right;
+            top = input_data->top;
+
+            if (thread_num == thread_count - 1) {
+                bottom = input_data->bottom;
+            } else {
+                bottom = malloc(sizeof(int) * num_of_top_bottom);
+
+                bottom[0] = input_data->left[abs_end_index];
+                memcpy(&bottom[1], &input_data->matrix[MATRIX_POSITION(abs_end_index, 0, input_data)], sizeof(int) * column_count);
+                bottom[column_count + 1] = input_data->right[abs_end_index];
+            }
         }
 
-        MPI_Recv(&expected_matrix[0], num_of_elements, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        if (thread_num == 0) {
-            printf("Expected Matrix: \n");
-            print_vector(expected_matrix, num_of_elements);
-        }
-
-        MPI_Recv(left, num_of_left_right, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        if (thread_num == 0) {
-            printf("Left: \n");
-            print_vector(left, num_of_left_right);
-        }
-
-        MPI_Recv(right, num_of_left_right, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        if (thread_num == 0) {
-            printf("Right: \n");
-            print_vector(right, num_of_left_right);
-        }
-        top = malloc(sizeof(int) * num_of_top_bottom);
-        MPI_Recv(top, num_of_top_bottom, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-        if (thread_num == 0) {
-            printf("Top: \n");
-            print_vector(top, num_of_top_bottom);
-        }
-
-        bottom = malloc(sizeof(int) * num_of_top_bottom);
-        MPI_Recv(bottom, num_of_top_bottom, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-
-        if (thread_num == 0) {
-            printf("Bottom: \n");
-            print_vector(bottom, num_of_top_bottom);
-        }
-
-
-
-        MATRIX_DATA *data = malloc(sizeof(MATRIX_DATA));
+        data = malloc(sizeof(MATRIX_DATA));
         data->top = top;
         data->bottom = bottom;
         data->left = left;
@@ -187,7 +204,7 @@ int main(int argc, char **argv) {
         data->column_count = column_count;
         data->row_count = abs_end_index - abs_start_index;
 
-        MATRIX_DATA *expected_data = malloc(sizeof(MATRIX_DATA));
+        expected_data = malloc(sizeof(MATRIX_DATA));
         expected_data->top = top;
         expected_data->bottom = bottom;
         expected_data->left = left;
@@ -195,6 +212,10 @@ int main(int argc, char **argv) {
         expected_data->matrix = expected_matrix;
         expected_data->column_count = column_count;
         expected_data->row_count = abs_end_index - abs_start_index;
+
+        if (thread_num == 0) {
+            calculation_start_time = MPI_Wtime();
+        }
 
         INT_MATRIX last_row = malloc(sizeof(int) * (data->column_count + 2));
         INT_MATRIX current_row = malloc(sizeof(int) * (data->column_count + 2));
@@ -258,31 +279,60 @@ int main(int argc, char **argv) {
                 }
             }
 
+            //printf("Sending begin\n");
+            MPI_Request requests[4];
+            MPI_Status statuses[4];
+            int count = 0;
+
             if (thread_num > 0) {
-                MPI_Send(matrix, column_count, MPI_INT, thread_num - 1, 0, MPI_COMM_WORLD);
+                MPI_Isend(matrix, column_count, MPI_INT, thread_num - 1, 0, MPI_COMM_WORLD, &requests[count]);
+                count++;
             }
 
             if (thread_num + 1 < thread_count) {
-                MPI_Send(&matrix[MATRIX_POSITION(data->row_count - 1, 0, data)], column_count,
-                         MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD);
+                MPI_Isend(&matrix[MATRIX_POSITION(data->row_count - 1, 0, data)], column_count,
+                         MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD, &requests[count]);
+                count++;
             }
+            //printf("Sending done\n");
 
             if (thread_num > 0) {
-                MPI_Recv(&data->top[1], column_count, MPI_INT, thread_num - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                MPI_Irecv(&data->top[1], column_count, MPI_INT, thread_num - 1, 0, MPI_COMM_WORLD, &requests[count]);
+                count++;
             }
 
             if (thread_num + 1 < thread_count) {
-                MPI_Recv(&data->bottom[1], column_count, MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                MPI_Irecv(&data->bottom[1], column_count, MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD, &requests[count]);
+                count++;
             }
+            MPI_Waitall(count, &requests[0], &statuses[0]);
         }
 
-        free(last_row);
-        free(current_row);
-
-        check_equal(data, expected_data);
-
-
+        failsafe_free((void**)&last_row);
+        failsafe_free((void**)&current_row);
     }/**/
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if (thread_num == 0) {
+        double elapsed_time = MPI_Wtime() - calculation_start_time;
+        printf("Stopped time for Open MPI: %.3f ms\n", (float)elapsed_time*1000);
+    }
+
+    if (thread_num < row_count) {
+        check_equal(data, expected_data);
+    }
+
+    free_matrixdata(input_data);
+    free_matrixdata(input_expected_data);
+    if (thread_num == 0) {
+        if (thread_num < thread_count - 1) {
+            failsafe_free((void**)&data->bottom); // only bottom has its own malloc, because of reasons
+        }
+        failsafe_free((void**)&data); // because expected_data is basically a copy of input_data
+    } else {
+        free_matrixdata(data);
+    }
 
     MPI_Finalize();
 }

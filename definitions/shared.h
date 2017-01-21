@@ -42,4 +42,8 @@ void print_vector(INT_MATRIX data, int vector_size);
 
 void check_equal(MATRIX_DATA *a, MATRIX_DATA *b);
 
+void failsafe_free(void ** ptr);
+
+double mytime(void);
+
 #endif //PROJECT_SHARED_H

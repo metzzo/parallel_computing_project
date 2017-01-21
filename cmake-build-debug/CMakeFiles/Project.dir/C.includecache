@@ -35,6 +35,8 @@ shared.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
 assert.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/assert.h
+sys/time.h
+-
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
 stdio.h
@@ -60,6 +62,20 @@ sys/param.h
 ../definitions/shared.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h
 
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_barrier_osx.c
+pthread.h
+-
+errno.h
+-
+pthread_barrier_osx.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_barrier_osx.h
+
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_barrier_osx.h
+pthread.h
+-
+errno.h
+-
+
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.c
 string.h
 -
@@ -69,6 +85,8 @@ pthread_solution.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
 assert.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/assert.h
+pthread_barrier_osx.h
+/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_barrier_osx.h
 pthread.h
 -
 semaphore.h
@@ -161,8 +179,6 @@ test_cases/test_constant_matrix.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h
 test_stencil.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.h
-sys/time.h
--
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h
 ../sequential/sequential_solution.h

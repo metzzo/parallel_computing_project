@@ -13,6 +13,7 @@
 
 
 void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
+    double calculation_start_time = omp_get_wtime();
 #pragma omp parallel num_threads(MIN(omp_get_max_threads(), data->row_count))
     {
         int num_threads = omp_get_num_threads();
@@ -126,4 +127,6 @@ void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
         free(top_row);
         free(bottom_row);
     }
+    double elapsed_time = omp_get_wtime() - calculation_start_time;
+    printf("Stopped time for OpenMP: %.3f ms\n", (float)elapsed_time*1000);
 }

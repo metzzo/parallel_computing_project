@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "shared.h"
 #include "assert.h"
+#include <sys/time.h>
 
 int get_matrix_value(int row, int column, MATRIX_DATA *data) {
     assert(row >= 0);
@@ -42,22 +43,26 @@ void print_vector(INT_MATRIX data, int vector_size) {
 
 
 void free_matrixdata(MATRIX_DATA *data) {
+    if (data == NULL) {
+        return;
+    }
+
     if (data->top == data->bottom) {
-        free(data->top);
+        failsafe_free((void**)&data->top);
     } else {
-        free(data->top);
-        free(data->bottom);
+        failsafe_free((void**)&data->top);
+        failsafe_free((void**)&data->bottom);
     }
 
     if (data->left == data->right) {
-        free(data->left);
+        failsafe_free((void**)&data->left);
     } else {
-        free(data->left);
-        free(data->right);
+        failsafe_free((void**)&data->left);
+        failsafe_free((void**)&data->right);
     }
 
-    free(data->matrix);
-    free(data);
+    failsafe_free((void**)&data->matrix);
+    failsafe_free((void**)&data);
 }
 
 
@@ -95,4 +100,22 @@ void check_equal(MATRIX_DATA *a, MATRIX_DATA *b) {
         assert(a->left[i] == b->left[i]);
         assert(a->right[i] == b->right[i]);
     }
+    //printf("Check equal was successful <3\n");
+}
+
+void failsafe_free(void ** ptr) {
+    if (ptr == NULL) {
+        return;
+    }
+
+    if (ptr[0] != NULL) {
+        free(ptr[0]);
+    }
+    ptr[0] = NULL;
+}
+
+double mytime(void) {
+    struct timeval now; gettimeofday(&now,NULL);
+    return (double)((long long)now.tv_usec+
+                    (long long)now.tv_sec*1000000) / 1000.0;
 }

@@ -26,27 +26,23 @@ void test_big_matrix(int row_count, int column_count, int thread_count, int iter
     };
 
     printf("Sequential Implementation \n");
-    start_timer();
     stencil_sequential(data1, &stencil);
-    end_timer("Sequential");
 
     printf("pThread Implementation \n");
-    start_timer();
     stencil_pthread(data2, &stencil, thread_count);
-    end_timer("pThread");
     check_equal(data1, data2);
 
     printf("OpenMP Implementation \n");
-    start_timer();
     stencil_openmp(data3, &stencil);
-    end_timer("OpenMP");
     check_equal(data1, data3);
 
     printf("Cilk Implementation \n");
-    start_timer();
     stencil_cilk(data4, &stencil, thread_count);
-    end_timer("Cilk");
     check_equal(data1, data4);
+
+
+    printf("Open MPI Implementation \n");
+    run_mpi("big_matrix", iteration_count, row_count, column_count, thread_count);
 
     free_matrixdata(data1);
     free_matrixdata(data2);
