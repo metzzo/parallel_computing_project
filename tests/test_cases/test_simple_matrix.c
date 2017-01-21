@@ -35,7 +35,7 @@ void test_simple_matrix(int thread_count) {
     stencil_cilk(data4, &stencils, thread_count);
     check_equal(data4, expected_data);
 
-
+    printf("Open MPI Implementation \n");
     run_mpi("simple_matrix", 1, 4, 4, thread_count);
 
     free_matrixdata(data1);

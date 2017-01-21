@@ -9,6 +9,7 @@
 #include "pthread_barrier_osx.h"
 #include <pthread.h>
 #include <semaphore.h>
+#include <fcntl.h>
 
 #define THREAD_DEBUG_LOG(info, fmt, ...) if (DEBUG_MODE) { do {pthread_mutex_lock(tinfo->debug_mutex); DEBUG_LOG(fmt, ##__VA_ARGS__); pthread_mutex_unlock(tinfo->debug_mutex); } while(0); };
 #define DEBUG_PRINT_MATRIX(x) if (DEBUG_MODE) {print_matrix(x); };
@@ -264,17 +265,22 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
 
     tinfo[thread_count - 1].end_index = data->row_count;
 
-    for (int i = 0; i < thread_count; i++) {
-        if (i == 0) {
-            tinfo[i].semOtherBottom = SEM_FAILED;
-            tinfo[i].semOtherTop = tinfo[i+1].semMineTop;
-        } else if (i < thread_count - 1) {
-            tinfo[i].semOtherBottom = tinfo[i-1].semMineBottom;
-            tinfo[i].semOtherTop = tinfo[i+1].semMineTop;
-        } else {
-            tinfo[i].semOtherTop = SEM_FAILED;
-            tinfo[i].semOtherBottom = tinfo[i-1].semMineBottom;
+    if (thread_count > 1) {
+        for (int i = 0; i < thread_count; i++) {
+            if (i == 0) {
+                tinfo[i].semOtherBottom = SEM_FAILED;
+                tinfo[i].semOtherTop = tinfo[i + 1].semMineTop;
+            } else if (i < thread_count - 1) {
+                tinfo[i].semOtherBottom = tinfo[i - 1].semMineBottom;
+                tinfo[i].semOtherTop = tinfo[i + 1].semMineTop;
+            } else {
+                tinfo[i].semOtherTop = SEM_FAILED;
+                tinfo[i].semOtherBottom = tinfo[i - 1].semMineBottom;
+            }
         }
+    } else {
+        tinfo[0].semOtherBottom = SEM_FAILED;
+        tinfo[0].semOtherTop = SEM_FAILED;
     }
 
     DEBUG_LOG("Apply stencil on Matrix: \n");

@@ -56,6 +56,8 @@ int main(int argc, char **argv) {
 
             srand(randomseed);
             input_expected_data = generate_big_matrix(row_count, column_count);
+            check_equal(input_data, input_expected_data);
+
             stencil_sequential(input_expected_data, &stencil);
         } else if (strcmp(name, "constant_matrix") == 0) {
             input_data = generate_constant_matrix(row_count, column_count);
@@ -74,7 +76,7 @@ int main(int argc, char **argv) {
             int start_index = row_count / thread_count * i;
             int end_index = row_count / thread_count * (i + 1);
 
-            if (row_count - 1 == i) {
+            if (thread_count - 1 == i) {
                 end_index = row_count;
             }
             int error_code = MPI_Send(&input_data->matrix[MATRIX_POSITION(start_index, 0, input_data)],
@@ -119,7 +121,7 @@ int main(int argc, char **argv) {
         int abs_start_index = row_count / thread_count * thread_num;
         int abs_end_index = row_count / thread_count * (thread_num + 1);
 
-        if (row_count - 1 == thread_num) {
+        if (thread_count - 1 == thread_num) {
             abs_end_index = row_count;
         }
 
@@ -291,7 +293,7 @@ int main(int argc, char **argv) {
 
             if (thread_num + 1 < thread_count) {
                 MPI_Isend(&matrix[MATRIX_POSITION(data->row_count - 1, 0, data)], column_count,
-                         MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD, &requests[count]);
+                          MPI_INT, thread_num + 1, 0, MPI_COMM_WORLD, &requests[count]);
                 count++;
             }
             //printf("Sending done\n");

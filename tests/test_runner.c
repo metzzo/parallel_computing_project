@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include <libiomp/omp.h>
+#include <stdlib.h>
 
 #include "../definitions/shared.h"
 

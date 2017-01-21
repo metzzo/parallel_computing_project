@@ -91,6 +91,8 @@ pthread.h
 -
 semaphore.h
 -
+fcntl.h
+-
 
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/pthread/pthread_solution.h
 ../definitions/shared.h
@@ -165,7 +167,7 @@ stdio.h
 -
 assert.h
 -
-libiomp/omp.h
+stdlib.h
 -
 ../definitions/shared.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/definitions/shared.h

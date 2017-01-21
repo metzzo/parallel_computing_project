@@ -37,6 +37,7 @@ void test_constant_matrix(int row_count, int column_count, int thread_count, int
     stencil_cilk(data4, &stencil, thread_count);
     check_equal(data4, expected_data);
 
+    printf("Open MPI Implementation \n");
     run_mpi("constant_matrix", iteration_count, row_count, column_count, thread_count);
 
     free_matrixdata(data1);
