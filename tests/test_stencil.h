@@ -7,5 +7,6 @@
 
 int add_stencil_func(int values[3][3]);
 int increment_stencil_func(int values[3][3]);
+int add_stencil_complicated_func(int values[3][3]);
 
 #endif //PROJECT_TEST_STENCIL_H

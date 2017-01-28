@@ -303,10 +303,6 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         pthread_join(tinfo[i].thread_id, NULL);
     }
 
-    double elapsed_time = mytime() - calculation_start_time;
-    printf("Stopped time for pThread: %.3f ms\n", (float)elapsed_time);
-
-
     pthread_barrier_destroy(&barrier);
 
     for (int i = 0; i < thread_count; i++) {
@@ -320,4 +316,11 @@ void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         sem_unlink(sem1);
         sem_unlink(sem2);
     }
+
+    double elapsed_time = mytime() - calculation_start_time;
+#ifdef BENCHMARKING
+    printf("%.3f", (float)elapsed_time);
+#else
+    printf("Stopped time for pThread: %.3f ms\n", (float)elapsed_time);
+#endif
 }

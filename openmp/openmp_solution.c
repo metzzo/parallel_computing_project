@@ -127,6 +127,10 @@ void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
         free(top_row);
         free(bottom_row);
     }
-    double elapsed_time = omp_get_wtime() - calculation_start_time;
-    printf("Stopped time for OpenMP: %.3f ms\n", (float)elapsed_time*1000);
+    double elapsed_time = (omp_get_wtime() - calculation_start_time)*1000;
+#ifdef BENCHMARKING
+    printf("%.3f", (float)elapsed_time);
+#else
+    printf("Stopped time for OpenMP: %.3f ms\n", (float)elapsed_time);
+#endif
 }

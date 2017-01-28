@@ -285,86 +285,32 @@ sequential/sequential_solution.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/sequential/sequential_solution.c.s
 .PHONY : sequential/sequential_solution.c.s
 
-tests/test_cases/test_big_matrix.o: tests/test_cases/test_big_matrix.c.o
+tests/benchmark_runner.o: tests/benchmark_runner.c.o
 
-.PHONY : tests/test_cases/test_big_matrix.o
-
-# target to build an object file
-tests/test_cases/test_big_matrix.c.o:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.o
-.PHONY : tests/test_cases/test_big_matrix.c.o
-
-tests/test_cases/test_big_matrix.i: tests/test_cases/test_big_matrix.c.i
-
-.PHONY : tests/test_cases/test_big_matrix.i
-
-# target to preprocess a source file
-tests/test_cases/test_big_matrix.c.i:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.i
-.PHONY : tests/test_cases/test_big_matrix.c.i
-
-tests/test_cases/test_big_matrix.s: tests/test_cases/test_big_matrix.c.s
-
-.PHONY : tests/test_cases/test_big_matrix.s
-
-# target to generate assembly for a file
-tests/test_cases/test_big_matrix.c.s:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_big_matrix.c.s
-.PHONY : tests/test_cases/test_big_matrix.c.s
-
-tests/test_cases/test_constant_matrix.o: tests/test_cases/test_constant_matrix.c.o
-
-.PHONY : tests/test_cases/test_constant_matrix.o
+.PHONY : tests/benchmark_runner.o
 
 # target to build an object file
-tests/test_cases/test_constant_matrix.c.o:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.o
-.PHONY : tests/test_cases/test_constant_matrix.c.o
+tests/benchmark_runner.c.o:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/benchmark_runner.c.o
+.PHONY : tests/benchmark_runner.c.o
 
-tests/test_cases/test_constant_matrix.i: tests/test_cases/test_constant_matrix.c.i
+tests/benchmark_runner.i: tests/benchmark_runner.c.i
 
-.PHONY : tests/test_cases/test_constant_matrix.i
-
-# target to preprocess a source file
-tests/test_cases/test_constant_matrix.c.i:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.i
-.PHONY : tests/test_cases/test_constant_matrix.c.i
-
-tests/test_cases/test_constant_matrix.s: tests/test_cases/test_constant_matrix.c.s
-
-.PHONY : tests/test_cases/test_constant_matrix.s
-
-# target to generate assembly for a file
-tests/test_cases/test_constant_matrix.c.s:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_constant_matrix.c.s
-.PHONY : tests/test_cases/test_constant_matrix.c.s
-
-tests/test_cases/test_simple_matrix.o: tests/test_cases/test_simple_matrix.c.o
-
-.PHONY : tests/test_cases/test_simple_matrix.o
-
-# target to build an object file
-tests/test_cases/test_simple_matrix.c.o:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.o
-.PHONY : tests/test_cases/test_simple_matrix.c.o
-
-tests/test_cases/test_simple_matrix.i: tests/test_cases/test_simple_matrix.c.i
-
-.PHONY : tests/test_cases/test_simple_matrix.i
+.PHONY : tests/benchmark_runner.i
 
 # target to preprocess a source file
-tests/test_cases/test_simple_matrix.c.i:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.i
-.PHONY : tests/test_cases/test_simple_matrix.c.i
+tests/benchmark_runner.c.i:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/benchmark_runner.c.i
+.PHONY : tests/benchmark_runner.c.i
 
-tests/test_cases/test_simple_matrix.s: tests/test_cases/test_simple_matrix.c.s
+tests/benchmark_runner.s: tests/benchmark_runner.c.s
 
-.PHONY : tests/test_cases/test_simple_matrix.s
+.PHONY : tests/benchmark_runner.s
 
 # target to generate assembly for a file
-tests/test_cases/test_simple_matrix.c.s:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_cases/test_simple_matrix.c.s
-.PHONY : tests/test_cases/test_simple_matrix.c.s
+tests/benchmark_runner.c.s:
+	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/benchmark_runner.c.s
+.PHONY : tests/benchmark_runner.c.s
 
 tests/test_generator.o: tests/test_generator.c.o
 
@@ -392,33 +338,6 @@ tests/test_generator.s: tests/test_generator.c.s
 tests/test_generator.c.s:
 	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_generator.c.s
 .PHONY : tests/test_generator.c.s
-
-tests/test_runner.o: tests/test_runner.c.o
-
-.PHONY : tests/test_runner.o
-
-# target to build an object file
-tests/test_runner.c.o:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_runner.c.o
-.PHONY : tests/test_runner.c.o
-
-tests/test_runner.i: tests/test_runner.c.i
-
-.PHONY : tests/test_runner.i
-
-# target to preprocess a source file
-tests/test_runner.c.i:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_runner.c.i
-.PHONY : tests/test_runner.c.i
-
-tests/test_runner.s: tests/test_runner.c.s
-
-.PHONY : tests/test_runner.s
-
-# target to generate assembly for a file
-tests/test_runner.c.s:
-	$(MAKE) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/tests/test_runner.c.s
-.PHONY : tests/test_runner.c.s
 
 tests/test_stencil.o: tests/test_stencil.c.o
 
@@ -474,21 +393,12 @@ help:
 	@echo "... sequential/sequential_solution.o"
 	@echo "... sequential/sequential_solution.i"
 	@echo "... sequential/sequential_solution.s"
-	@echo "... tests/test_cases/test_big_matrix.o"
-	@echo "... tests/test_cases/test_big_matrix.i"
-	@echo "... tests/test_cases/test_big_matrix.s"
-	@echo "... tests/test_cases/test_constant_matrix.o"
-	@echo "... tests/test_cases/test_constant_matrix.i"
-	@echo "... tests/test_cases/test_constant_matrix.s"
-	@echo "... tests/test_cases/test_simple_matrix.o"
-	@echo "... tests/test_cases/test_simple_matrix.i"
-	@echo "... tests/test_cases/test_simple_matrix.s"
+	@echo "... tests/benchmark_runner.o"
+	@echo "... tests/benchmark_runner.i"
+	@echo "... tests/benchmark_runner.s"
 	@echo "... tests/test_generator.o"
 	@echo "... tests/test_generator.i"
 	@echo "... tests/test_generator.s"
-	@echo "... tests/test_runner.o"
-	@echo "... tests/test_runner.i"
-	@echo "... tests/test_runner.s"
 	@echo "... tests/test_stencil.o"
 	@echo "... tests/test_stencil.i"
 	@echo "... tests/test_stencil.s"

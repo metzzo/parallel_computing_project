@@ -15,8 +15,6 @@
 #include "test_cases/test_constant_matrix.h"
 #include "test_stencil.h"
 
-double mytime(void);
-
 int main(int argc, char **args) {
     printf("---------------------------------------\n");
     printf("Test Constant Matrix \n");

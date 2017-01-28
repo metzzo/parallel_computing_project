@@ -1,0 +1,10 @@
+//
+// Created by Robert Fischer on 28.01.17.
+//
+
+#ifndef PROJECT_BENCHMARK_RUNNER_H
+#define PROJECT_BENCHMARK_RUNNER_H
+
+#define REPRODUCE_COUNT 25
+
+#endif //PROJECT_BENCHMARK_RUNNER_H

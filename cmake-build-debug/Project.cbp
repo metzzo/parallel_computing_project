@@ -120,34 +120,16 @@
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/sequential/sequential_solution.h">
 			<Option target="Project"/>
 		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.c">
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/benchmark_runner.c">
 			<Option target="Project"/>
 		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_big_matrix.h">
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.c">
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_constant_matrix.h">
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.c">
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_cases/test_simple_matrix.h">
+		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/benchmark_runner.h">
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.c">
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_generator.h">
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.c">
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_runner.h">
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/test_stencil.c">

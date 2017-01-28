@@ -71,9 +71,14 @@ void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
         }
     }
 
-    double elapsed_time = mytime() - calculation_start_time;
-    printf("Stopped time for Sequential: %.3f ms\n", (float)elapsed_time);
-
     free(last_row);
     free(current_row);
+
+
+    double elapsed_time = mytime() - calculation_start_time;
+#ifdef BENCHMARKING
+    printf("%.3f", (float)elapsed_time);
+#else
+    printf("Stopped time for Sequential: %.3f ms\n", (float)elapsed_time);
+#endif
 }
