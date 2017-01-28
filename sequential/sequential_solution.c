@@ -7,7 +7,7 @@
 #include "sequential_solution.h"
 
 
-void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
+double stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
     double calculation_start_time = mytime();
 
     INT_MATRIX matrix = data->matrix;
@@ -76,9 +76,8 @@ void stencil_sequential(MATRIX_DATA *data, STENCIL *stencil) {
 
 
     double elapsed_time = mytime() - calculation_start_time;
-#ifdef BENCHMARKING
-    printf("%.3f", (float)elapsed_time);
-#else
+#ifndef BENCHMARKING
     printf("Stopped time for Sequential: %.3f ms\n", (float)elapsed_time);
 #endif
+    return elapsed_time;
 }

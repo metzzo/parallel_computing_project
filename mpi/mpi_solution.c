@@ -21,12 +21,16 @@ int main(int argc, char **argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &thread_count);
     MPI_Comm_rank(MPI_COMM_WORLD, &thread_num);
 
-    assert(argc == 5 && "argv must have 5 arguments");
+    assert(argc == 6 && "argv must have 6 arguments");
 
     const char *name = argv[1];
     int iteration_count = (int)strtol(argv[2], NULL, 10);
     int row_count = (int)strtol(argv[3], NULL, 10);
     int column_count = (int)strtol(argv[4], NULL, 10);
+    int stencil_func = (int)strtol(argv[5], NULL, 10);
+
+    assert(stencil_func == 1 || stencil_func == 2);
+
     double calculation_start_time = 0;
 
     thread_count = MIN(row_count, thread_count);
@@ -39,7 +43,7 @@ int main(int argc, char **argv) {
     MATRIX_DATA *input_expected_data = NULL;
 
     if (strcmp(name, "big_matrix") == 0) {
-        stencil.stencil_func = &add_stencil_func;
+        stencil.stencil_func = stencil_func == 1 ? &add_stencil_func : &add_stencil_complicated_func;
     } else if (strcmp(name, "constant_matrix") == 0) {
         stencil.stencil_func = &increment_stencil_func;
     } else if (strcmp(name, "simple_matrix") == 0) {
@@ -49,6 +53,9 @@ int main(int argc, char **argv) {
     }
 
     if (thread_num == 0) {
+#ifdef BENCHMARKING
+        printf("mpi, %d, %d, %d, %d, %d, ", column_count, row_count, thread_count, iteration_count, stencil_func);
+#endif
         if (strcmp(name, "big_matrix") == 0) {
             int randomseed = rand();
             srand(randomseed);
@@ -315,7 +322,7 @@ int main(int argc, char **argv) {
     }/**/
 
     MPI_Barrier(MPI_COMM_WORLD);
-
+#ifndef BENCHMARKING
     if (thread_num == 0) {
         double elapsed_time = MPI_Wtime() - calculation_start_time;
         printf("Stopped time for Open MPI: %.3f ms\n", (float)elapsed_time*1000);
@@ -324,6 +331,7 @@ int main(int argc, char **argv) {
     if (thread_num < row_count) {
         check_equal(data, expected_data);
     }
+#endif
 
     free_matrixdata(input_data);
     free_matrixdata(input_expected_data);
@@ -335,6 +343,13 @@ int main(int argc, char **argv) {
     } else {
         free_matrixdata(data);
     }
+
+#ifdef BENCHMARKING
+    if (thread_num == 0) {
+        double elapsed_time = (MPI_Wtime() - calculation_start_time)*1000;
+        printf("%.3f\n", (float)elapsed_time);
+    }
+#endif
 
     MPI_Finalize();
 }

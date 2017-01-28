@@ -119,7 +119,7 @@ void stencil_writer(CILK_INFO *info) {
 
 
 
-void stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
+double stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
     double calculation_start_time = mytime();
 
     thread_count = MIN(thread_count, data->row_count);
@@ -156,6 +156,8 @@ void stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         cilk_sync;
     }
 
+    double elapsed_time = mytime() - calculation_start_time;
+
     for (int thread_num = 0; thread_num < thread_count; thread_num++) {
         free(infos[thread_num].last_row);
         free(infos[thread_num].current_row);
@@ -164,10 +166,8 @@ void stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count) {
         free(infos[thread_num].bottom_row);
     }
 
-    double elapsed_time = mytime() - calculation_start_time;
-#ifdef BENCHMARKING
-    printf("%.3f", (float)elapsed_time);
-#else
+#ifndef BENCHMARKING
     printf("Stopped time for Cilk: %.3f ms\n", (float)elapsed_time);
 #endif
+    return elapsed_time;
 }

@@ -117,6 +117,8 @@ stdlib.h
 -
 printf.h
 -
+string.h
+-
 benchmark_runner.h
 /Users/rfischer/Dropbox/Studium_Sem5/PC/Project/tests/benchmark_runner.h
 ../definitions/shared.h

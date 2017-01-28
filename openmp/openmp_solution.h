@@ -7,6 +7,6 @@
 
 #include "../definitions/shared.h"
 
-void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil);
+double stencil_openmp(MATRIX_DATA *data, STENCIL *stencil);
 
 #endif //PROJECT_OPENMP_SOLUTION_H

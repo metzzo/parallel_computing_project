@@ -7,6 +7,6 @@
 
 #include "../definitions/shared.h"
 
-void stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count);
+double stencil_pthread(MATRIX_DATA *data, STENCIL *stencil, int thread_count);
 
 #endif //PROJECT_PTHREAD_H

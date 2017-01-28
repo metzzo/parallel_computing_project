@@ -1,7 +1,6 @@
 //
 // Created by Robert Fischer on 21.01.17.
 //
-
 #ifdef __APPLE__
 
 #ifndef PROJECT_PTHREAD_BARRIER_OSX_H

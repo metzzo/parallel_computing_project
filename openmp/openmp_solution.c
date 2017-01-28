@@ -12,7 +12,7 @@
 #include <sys/param.h>
 
 
-void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
+double stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
     double calculation_start_time = omp_get_wtime();
 #pragma omp parallel num_threads(MIN(omp_get_max_threads(), data->row_count))
     {
@@ -128,9 +128,8 @@ void stencil_openmp(MATRIX_DATA *data, STENCIL *stencil) {
         free(bottom_row);
     }
     double elapsed_time = (omp_get_wtime() - calculation_start_time)*1000;
-#ifdef BENCHMARKING
-    printf("%.3f", (float)elapsed_time);
-#else
+#ifndef BENCHMARKING
     printf("Stopped time for OpenMP: %.3f ms\n", (float)elapsed_time);
 #endif
+    return elapsed_time;
 }

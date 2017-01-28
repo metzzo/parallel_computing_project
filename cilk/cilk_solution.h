@@ -7,6 +7,6 @@
 
 #include "../definitions/shared.h"
 
-void stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count);
+double stencil_cilk(MATRIX_DATA *data, STENCIL *stencil, int thread_count);
 
 #endif //PROJECT_CILK_SOLUTION_H

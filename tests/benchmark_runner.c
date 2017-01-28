@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <printf.h>
+#include <string.h>
 #include "benchmark_runner.h"
 #include "../definitions/shared.h"
 #include "test_generator.h"
@@ -15,17 +16,18 @@
 #include "../cilk/cilk_solution.h"
 
 int main(int argc, char **args) {
-    if (argc != 6) {
+    if (argc != 7) {
         printf("Know your syntax\n");
         return -1;
     }
 
     int column_count, row_count, thread_count, iteration_count, stencil_func;
-    column_count = atoi(args[1]);
-    row_count = atoi(args[2]);
-    thread_count = atoi(args[3]);
-    iteration_count = atoi(args[4]);
-    stencil_func = atoi(args[5]);
+    char *type = args[1];
+    column_count = atoi(args[2]);
+    row_count = atoi(args[3]);
+    thread_count = atoi(args[4]);
+    iteration_count = atoi(args[5]);
+    stencil_func = atoi(args[6]);
 
     assert(stencil_func == 1 || stencil_func == 2);
     assert(column_count > 0);
@@ -40,44 +42,32 @@ int main(int argc, char **args) {
 
     unsigned int randomseed = (unsigned int) (column_count + row_count * 1000 + thread_count * 10000 + iteration_count * 1000000);
 
-    printf("%d, %d, %d, %d, %d, ", column_count, row_count, thread_count, iteration_count, stencil_func);
+    printf("%s, %d, %d, %d, %d, %d, ", type, column_count, row_count, thread_count, iteration_count, stencil_func);
 
     // sequential
+    double times = 0;
     for (int i = 0; i < REPRODUCE_COUNT; i++) {
         srand(randomseed);
         MATRIX_DATA *data = generate_big_matrix(row_count, column_count);
 
-        stencil_sequential(data, &stencil);
-        printf(", ");
+        double time = 0;
+        if (strcmp(type, "sequential") == 0) {
+             time = stencil_sequential(data, &stencil);
+        } else if (strcmp(type, "pthread") == 0) {
+            time = stencil_pthread(data, &stencil, thread_count);
+        } else if (strcmp(type, "openmp") == 0) {
+            time = stencil_openmp(data, &stencil);
+        } else if (strcmp(type, "cilk") == 0) {
+            time = stencil_cilk(data, &stencil, thread_count);
+        } else {
+            assert(0);
+        }
+
+        times += time;
+
+        free_matrixdata(data);
     }
-
-    // pthread
-    for (int i = 0; i < REPRODUCE_COUNT; i++) {
-        srand(randomseed);
-        MATRIX_DATA *data = generate_big_matrix(row_count, column_count);
-
-        stencil_pthread(data, &stencil, thread_count);
-        printf(", ");
-    }
-
-    // openmp
-    for (int i = 0; i < REPRODUCE_COUNT; i++) {
-        srand(randomseed);
-        MATRIX_DATA *data = generate_big_matrix(row_count, column_count);
-
-        stencil_openmp(data, &stencil);
-        printf(", ");
-    }
-
-    // cilk
-    for (int i = 0; i < REPRODUCE_COUNT; i++) {
-        srand(randomseed);
-        MATRIX_DATA *data = generate_big_matrix(row_count, column_count);
-
-        stencil_cilk(data, &stencil, thread_count);
-        printf(", ");
-    }
-    printf("\n");
+    printf("%.3f\n", (float)(times / (double)REPRODUCE_COUNT));
 
     return 0;
 }
