@@ -45,7 +45,7 @@ int main(int argc, char **args) {
     printf("%s, %d, %d, %d, %d, %d, ", type, column_count, row_count, thread_count, iteration_count, stencil_func);
 
     // sequential
-    double times = 0;
+    double times = 0, max_time = 0, min_time = 0;
     for (int i = 0; i < REPRODUCE_COUNT; i++) {
         srand(randomseed);
         MATRIX_DATA *data = generate_big_matrix(row_count, column_count);
@@ -64,10 +64,18 @@ int main(int argc, char **args) {
         }
 
         times += time;
+        if (i == 0) {
+            max_time = time;
+            min_time = time;
+        } else if (max_time < time) {
+            max_time = time;
+        } else if (min_time > time) {
+            min_time = time;
+        }
 
         free_matrixdata(data);
     }
-    printf("%.3f\n", (float)(times / (double)REPRODUCE_COUNT));
+    printf("%.3f, %f, %f\n", (float)(times / (double)REPRODUCE_COUNT), (float)max_time, (float)min_time);
 
     return 0;
 }

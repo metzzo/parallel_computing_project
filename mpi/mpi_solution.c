@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     }
 
 #ifdef BENCHMARKING
-    double times = 0;
+    double times = 0, max_time = 0, min_time = 0;
     for (int benchmark = 0; benchmark < 25; benchmark++) {
 #endif
 
@@ -355,11 +355,19 @@ int main(int argc, char **argv) {
 #ifdef BENCHMARKING
         double elapsed_time = (MPI_Wtime() - calculation_start_time)*1000;
         times += elapsed_time;
+        if (benchmark == 0) {
+            max_time = elapsed_time;
+            min_time = elapsed_time;
+        } else if (max_time < elapsed_time) {
+            max_time = elapsed_time;
+        } else if (min_time > elapsed_time) {
+            min_time = elapsed_time;
+        }
     }
     MPI_Barrier(MPI_COMM_WORLD);
     if (thread_num == 0) {
         times /= 25.0;
-        printf("mpi, %d, %d, %d, %d, %d, %.3f\n", column_count, row_count, thread_count, iteration_count, stencil_func, (float)times);
+        printf("mpi, %d, %d, %d, %d, %d, %.3f, %f, %f\n", column_count, row_count, thread_count, iteration_count, stencil_func, (float)times, (float)max_time, (float)min_time);
     }
 #endif
 
